@@ -1,0 +1,6 @@
+env/
+.env
+data/
+.vscode/
+mysql-connector-j-8.0.33
+.DS_Store

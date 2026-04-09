@@ -1,0 +1,5 @@
+pyspark==3.5.0
+python-dotenv==1.2.1
+
+##mysql-connector-java==8.0.33
+##mongo-spark-connector==10.3.0
