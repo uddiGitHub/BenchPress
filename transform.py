@@ -1,5 +1,3 @@
-from pyspark.sql.functions import col
-
 def transform_data(spark, staging_path="data/staging"):
     # Read all necessary tables from staging
     customer = spark.read.parquet(f"{staging_path}/customer")

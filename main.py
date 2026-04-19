@@ -1,29 +1,37 @@
 from extract import extract_tpch_tables
-from stagging import stage_to_hdfs
+from stagging import stage_to_local
 from transform import transform_data
-from mapping import map_to_nosql, apply_partitioning
-from load import load_to_mongodb
+from mapping import map_to_Mongos, map_to_cassandra, apply_partitioning
+from load import load_parquet_to_mongodb, create_cassandra_keyspace_and_table, load_to_cassandra
+import os
 
 def main():
-    # Step 1: Extract
     spark, tables = extract_tpch_tables()
 
-    # Step 2: Stage all tables to HDFS / local Parquet
-    stage_to_hdfs(tables)
+    stage_to_local(tables)
 
-    # Step 3: Transform (joins + enrichment)
     denorm_df = transform_data(spark)
 
-    # Step 4: Map to nested document structure
-    doc_df = map_to_nosql(denorm_df)
+    # MongoDB path: nested documents
+    doc_df_mongos = map_to_Mongos(denorm_df)
+    doc_df_mongos = apply_partitioning(doc_df_mongos)
 
-    # Step 5: Partition for efficient MongoDB writes
-    doc_df = apply_partitioning(doc_df)
+    temp_parquet_path = "data/final_customersMongos.parquet"
+    doc_df_mongos.write.mode("overwrite").parquet(temp_parquet_path)
+    load_parquet_to_mongodb(temp_parquet_path, collection_name="customers")
 
-    # Step 6: Load to MongoDB
-    load_to_mongodb(doc_df, collection_name="customers")
+    # Cassandra path: flat denormalized data
+    doc_df_cassandra, cassandra_table = map_to_cassandra(denorm_df)
+    doc_df_cassandra = apply_partitioning(doc_df_cassandra)
 
-    print("TPC-H Migration to MongoDB Completed Successfully")
+
+    # Ensure Cassandra keyspace and table exist
+    create_cassandra_keyspace_and_table()
+
+    # Write to Cassandra (overwrite mode to avoid duplicates)
+    load_to_cassandra(doc_df_cassandra, table_name=cassandra_table, truncate_first=True)
+
+    print("✅ Migration to MongoDB and Cassandra completed successfully.")
     spark.stop()
 
 if __name__ == "__main__":
