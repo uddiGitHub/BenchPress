@@ -1,132 +1,437 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="NoSQL Benchmark TPCH" enabled="true">
-      <stringProp name="TestPlan.comments">Benchmarking MongoDB and Cassandra reading tpch1gb data</stringProp>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="DLoader Benchmark - SQL to NoSQL (TPC-H)" enabled="true">
+      <stringProp name="TestPlan.comments">Benchmarking MongoDB, Cassandra, and MySQL using TPC-H data based on DLoader paper</stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
-      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-        <collectionProp name="Arguments.arguments"/>
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="MONGO_HOST" elementType="Argument">
+            <stringProp name="Argument.name">MONGO_HOST</stringProp>
+            <stringProp name="Argument.value">localhost</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="MONGO_PORT" elementType="Argument">
+            <stringProp name="Argument.name">MONGO_PORT</stringProp>
+            <stringProp name="Argument.value">27017</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="MONGO_DB" elementType="Argument">
+            <stringProp name="Argument.name">MONGO_DB</stringProp>
+            <stringProp name="Argument.value">tpch1gb</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="CASSANDRA_HOST" elementType="Argument">
+            <stringProp name="Argument.name">CASSANDRA_HOST</stringProp>
+            <stringProp name="Argument.value">localhost</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="CASSANDRA_PORT" elementType="Argument">
+            <stringProp name="Argument.name">CASSANDRA_PORT</stringProp>
+            <stringProp name="Argument.value">9042</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="CASSANDRA_KEYSPACE" elementType="Argument">
+            <stringProp name="Argument.name">CASSANDRA_KEYSPACE</stringProp>
+            <stringProp name="Argument.value">tpch1gb</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="MYSQL_HOST" elementType="Argument">
+            <stringProp name="Argument.name">MYSQL_HOST</stringProp>
+            <stringProp name="Argument.value">localhost</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="MYSQL_PORT" elementType="Argument">
+            <stringProp name="Argument.name">MYSQL_PORT</stringProp>
+            <stringProp name="Argument.value">3306</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="MYSQL_DB" elementType="Argument">
+            <stringProp name="Argument.name">MYSQL_DB</stringProp>
+            <stringProp name="Argument.value">tpch</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="MYSQL_USER" elementType="Argument">
+            <stringProp name="Argument.name">MYSQL_USER</stringProp>
+            <stringProp name="Argument.value">root</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="MYSQL_PASSWORD" elementType="Argument">
+            <stringProp name="Argument.name">MYSQL_PASSWORD</stringProp>
+            <stringProp name="Argument.value">89432212</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="MAX_CUSTOMER_ID" elementType="Argument">
+            <stringProp name="Argument.name">MAX_CUSTOMER_ID</stringProp>
+            <stringProp name="Argument.value">150000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="THREADS" elementType="Argument">
+            <stringProp name="Argument.name">THREADS</stringProp>
+            <stringProp name="Argument.value">5</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="LOOPS" elementType="Argument">
+            <stringProp name="Argument.name">LOOPS</stringProp>
+            <stringProp name="Argument.value">100</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
       </elementProp>
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
+
+      <!-- ==================== MONGODB BENCHMARK ==================== -->
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="MongoDB Benchmark" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">100</stringProp>
+          <stringProp name="LoopController.loops">${LOOPS}</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">5</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${THREADS}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="MongoDB - Read Random Customer" enabled="true">
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="MongoDB Q1 - Read Customer by ID" enabled="true">
           <stringProp name="cacheKey">true</stringProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">scripts/mongo_q1.groovy</stringProp>
           <stringProp name="parameters"></stringProp>
-          <stringProp name="script">
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import org.bson.Document;
-import java.util.Random;
-
-MongoClient mongoClient = (MongoClient) props.get(&quot;mongoClient&quot;);
-if (mongoClient == null) {
-    synchronized(props) {
-        mongoClient = (MongoClient) props.get(&quot;mongoClient&quot;);
-        if (mongoClient == null) {
-            mongoClient = MongoClients.create(&quot;mongodb://localhost:27017&quot;);
-            props.put(&quot;mongoClient&quot;, mongoClient);
-        }
-    }
-}
-
-MongoDatabase database = mongoClient.getDatabase(&quot;tpch1gb&quot;);
-MongoCollection&lt;Document&gt; collection = database.getCollection(&quot;customers&quot;);
-
-Random rand = new Random();
-int customerId = rand.nextInt(150000) + 1;
-
-Document query = new Document(&quot;customer_id&quot;, customerId);
-long startTime = System.currentTimeMillis();
-Document doc = collection.find(query).first();
-
-if (doc != null) {
-    SampleResult.setResponseData(doc.toJson(), &quot;UTF-8&quot;);
-    SampleResult.setSuccessful(true);
-} else {
-    SampleResult.setResponseData(&quot;Not found&quot;, &quot;UTF-8&quot;);
-    SampleResult.setSuccessful(true);
-}
-          </stringProp>
+          <stringProp name="script"></stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="MongoDB Q2 - Read Customer Orders Detail" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename">scripts/mongo_q2.groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script"></stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="MongoDB Q3 - Aggregation: Orders by Status" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename">scripts/mongo_q3.groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script"></stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="MongoDB Q4 - Range Query: Customers by Region" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename">scripts/mongo_q4.groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script"></stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="MongoDB Q5 - Revenue Aggregation" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename">scripts/mongo_q5.groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script"></stringProp>
           <stringProp name="scriptLanguage">groovy</stringProp>
         </JSR223Sampler>
         <hashTree/>
       </hashTree>
+
+      <!-- ==================== CASSANDRA BENCHMARK ==================== -->
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Cassandra Benchmark" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">100</stringProp>
+          <stringProp name="LoopController.loops">${LOOPS}</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">5</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${THREADS}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Cassandra - Read Random Customer" enabled="true">
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Cassandra Q1 - Read Customer by ID" enabled="true">
           <stringProp name="cacheKey">true</stringProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">scripts/cassandra_q1.groovy</stringProp>
           <stringProp name="parameters"></stringProp>
-          <stringProp name="script">
-import com.datastax.oss.driver.api.core.CqlSession;
-import com.datastax.oss.driver.api.core.cql.ResultSet;
-import com.datastax.oss.driver.api.core.cql.Row;
-import java.net.InetSocketAddress;
-import java.util.Random;
-
-CqlSession session = (CqlSession) props.get(&quot;cassandraSession&quot;);
-if (session == null) {
-    synchronized(props) {
-        session = (CqlSession) props.get(&quot;cassandraSession&quot;);
-        if (session == null) {
-            session = CqlSession.builder()
-                .addContactPoint(new InetSocketAddress(&quot;localhost&quot;, 9042))
-                .withLocalDatacenter(&quot;datacenter1&quot;)
-                .withKeyspace(&quot;tpch1gb&quot;)
-                .build();
-            props.put(&quot;cassandraSession&quot;, session);
-        }
-    }
-}
-
-Random rand = new Random();
-int customerId = rand.nextInt(150000) + 1;
-
-String queryStr = &quot;SELECT * FROM customer_orders WHERE customer_id = &quot; + customerId;
-ResultSet rs = session.execute(queryStr);
-
-int count = 0;
-for (Row row : rs) {
-    count++;
-}
-
-SampleResult.setResponseData(&quot;Found &quot; + count + &quot; rows for customer &quot; + customerId, &quot;UTF-8&quot;);
-SampleResult.setSuccessful(true);
-          </stringProp>
+          <stringProp name="script"></stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Cassandra Q2 - Read Customer Orders Detail" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename">scripts/cassandra_q2.groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script"></stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Cassandra Q3 - Count Customer Orders" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename">scripts/cassandra_q3.groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script"></stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Cassandra Q4 - Filter by Return Flag" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename">scripts/cassandra_q4.groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script"></stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Cassandra Q5 - Revenue Aggregation" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename">scripts/cassandra_q5.groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script"></stringProp>
           <stringProp name="scriptLanguage">groovy</stringProp>
         </JSR223Sampler>
         <hashTree/>
       </hashTree>
+
+      <!-- ==================== MYSQL BASELINE BENCHMARK ==================== -->
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="MySQL Baseline Benchmark" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${LOOPS}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${THREADS}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="MySQL Q1 - Read Customer by ID" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename">scripts/mysql_q1.groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script"></stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="MySQL Q2 - Read Customer Orders Detail" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename">scripts/mysql_q2.groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script"></stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="MySQL Q3 - Aggregation: Orders by Status" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename">scripts/mysql_q3.groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script"></stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="MySQL Q4 - Range Query: Customers by Region" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename">scripts/mysql_q4.groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script"></stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="MySQL Q5 - Revenue Aggregation" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename">scripts/mysql_q5.groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script"></stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+      </hashTree>
+
+      <!-- ==================== TEARDOWN ==================== -->
+      <PostThreadGroup guiclass="PostThreadGroupGui" testclass="PostThreadGroup" testname="Teardown - Close Connections" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </PostThreadGroup>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Close All Connections" enabled="true">
+          <stringProp name="cacheKey">false</stringProp>
+          <stringProp name="filename">scripts/teardown.groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script"></stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+      </hashTree>
+
+      <!-- ==================== LISTENERS ==================== -->
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>true</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>true</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+
+      <ResultCollector guiclass="RespTimeGraphVisualizer" testclass="ResultCollector" testname="Response Time Graph" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+
     </hashTree>
   </hashTree>
 </jmeterTestPlan>

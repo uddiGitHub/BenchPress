@@ -150,16 +150,39 @@ BenchPress/
 ├── .env
 ├── README.md
 ├── requirements.txt
-├── main.py
-├── extract.py
-├── stagging.py
-├── transform.py
-├── mapping.py
-├── load.py
+├── main.py                          # ETL pipeline orchestrator
+├── extract.py                       # TPC-H data extraction (MySQL/Parquet)
+├── stagging.py                      # Stage data as local Parquet
+├── transform.py                     # Denormalize and join tables
+├── mapping.py                       # Map to MongoDB/Cassandra schemas
+├── load.py                          # Load into MongoDB and Cassandra
+├── benchmark_nosql.jmx              # JMeter test plan (15 queries)
+├── run_jmeter_tests.sh              # Benchmark runner script
+├── scripts/                         # External Groovy scripts for JMeter
+│   ├── mongo_q1.groovy              # MongoDB Q1: Point query
+│   ├── mongo_q2.groovy              # MongoDB Q2: Orders detail (aggregation)
+│   ├── mongo_q3.groovy              # MongoDB Q3: Orders by status
+│   ├── mongo_q4.groovy              # MongoDB Q4: Range query by region
+│   ├── mongo_q5.groovy              # MongoDB Q5: Revenue aggregation
+│   ├── cassandra_q1.groovy          # Cassandra Q1: Partition key lookup
+│   ├── cassandra_q2.groovy          # Cassandra Q2: Full partition scan
+│   ├── cassandra_q3.groovy          # Cassandra Q3: Distinct order count
+│   ├── cassandra_q4.groovy          # Cassandra Q4: Filter by return flag
+│   ├── cassandra_q5.groovy          # Cassandra Q5: Revenue aggregation
+│   ├── mysql_q1.groovy              # MySQL Q1: JOIN point query
+│   ├── mysql_q2.groovy              # MySQL Q2: Multi-table JOIN
+│   ├── mysql_q3.groovy              # MySQL Q3: GROUP BY aggregation
+│   ├── mysql_q4.groovy              # MySQL Q4: Range with JOIN
+│   ├── mysql_q5.groovy              # MySQL Q5: Revenue SUM
+│   └── teardown.groovy              # Close all DB connections
+├── jmeter-libs/                     # MongoDB & Cassandra Java driver JARs
+├── mysql-connector-j-8.0.33/        # MySQL JDBC connector
 ├── data/
-│   ├── staging/                     # generated staged parquet data
-│   └── final_customersMongos.parquet # generated intermediate MongoDB output
-└── Data Migration SQL to NoSQL.pdf
+│   ├── staging/                     # Generated staged Parquet data
+│   └── final_customersMongos.parquet # Generated intermediate MongoDB output
+├── results.jtl                      # Generated JMeter raw results
+├── jmeter_reports/                  # Generated HTML benchmark reports
+└── Data Migration SQL to NoSQL.pdf  # Reference paper
 ```
 
 ---
@@ -257,14 +280,6 @@ Run the pipeline from the project root:
 ```bash
 spark-submit --packages com.datastax.spark:spark-cassandra-connector_2.12:3.5.0,org.mongodb.spark:mongo-spark-connector_2.12:10.3.0,com.mysql:mysql-connector-j:8.0.33,com.github.jnr:jnr-posix:3.1.15 --driver-memory 6g --executor-memory 6g main.py
 ```
-
-If your environment requires `JAVA_HOME`, set it first, for example on macOS:
-
-```bash
-export JAVA_HOME=$(/usr/libexec/java_home -v 17)
-python main.py
-```
-
 ---
 
 ## Output Targets
@@ -328,6 +343,64 @@ A MongoDB customer document is structured approximately like this:
 
 ---
 
+## JMeter Benchmarking
+
+Based on the **DLoader paper** ("Migration of Data from SQL to NoSQL Databases" by K. Rajaram et al.), a comprehensive JMeter benchmark suite compares read performance across MongoDB, Cassandra, and MySQL.
+
+### Benchmark Queries
+
+The paper defines two core queries adapted to the TPC-H dataset, plus three extended analytical queries:
+
+| Query | Description | MongoDB | Cassandra | MySQL |
+|---|---|---|---|---|
+| **Q1** | Point query: read customer by ID | `find({customer_id: X})` | `SELECT ... WHERE customer_id = X LIMIT 1` | `SELECT ... JOIN nation JOIN region WHERE c_custkey = ?` |
+| **Q2** | Detail query: all orders + lineitems | Aggregation pipeline with `$unwind` | `SELECT * WHERE customer_id = X` | 4-table JOIN (customer→orders→lineitem) |
+| **Q3** | Aggregation: count orders by status | `$group` by order status | Client-side distinct count | `GROUP BY o_orderstatus` |
+| **Q4** | Range/filter query | Range on customer_id + region filter | Partition scan + return_flag filter | `BETWEEN` with region JOIN |
+| **Q5** | Revenue aggregation | `$multiply` / `$subtract` pipeline | Client-side revenue computation | `SUM(price * (1-discount) * (1+tax))` |
+
+### Running the Benchmark
+
+```bash
+# Default: 5 threads, 100 loops per thread
+./run_jmeter_tests.sh
+
+# Custom: 10 threads, 200 loops
+./run_jmeter_tests.sh 10 200
+
+# View the HTML report
+open jmeter_reports/index.html
+```
+
+### Results (5 threads × 100 loops)
+
+| Query | MongoDB Avg (ms) | Cassandra Avg (ms) | MySQL Avg (ms) |
+|---|---|---|---|
+| Q1 - Point Query | 43 | 3 | 11 |
+| Q2 - Detail Query | 76 | 2 | 20 |
+| Q3 - Aggregation | 72 | 1 | 13 |
+| Q4 - Range/Filter | 78 | 2 | 12 |
+| Q5 - Revenue | 82 | 3 | 43 |
+
+Cassandra offers the best read performance across all query types, consistent with the paper's findings.
+
+### Benchmark Configuration
+
+The JMX test plan uses configurable variables:
+
+| Variable | Default | Description |
+|---|---|---|
+| `THREADS` | 5 | Number of concurrent threads |
+| `LOOPS` | 100 | Number of iterations per thread |
+| `MAX_CUSTOMER_ID` | 150000 | Upper bound for random customer ID generation |
+| `MONGO_HOST` | localhost | MongoDB host |
+| `CASSANDRA_HOST` | localhost | Cassandra host |
+| `MYSQL_HOST` | localhost | MySQL host |
+
+Thread groups run sequentially (MongoDB → Cassandra → MySQL) to avoid cross-database interference. All database connections are reused across iterations and cleaned up in a teardown phase.
+
+---
+
 ## Notes
 
 - `stagging.py` is the current staging module filename used by the code.
@@ -337,6 +410,7 @@ A MongoDB customer document is structured approximately like this:
 - The Cassandra load path uses both:
   - native Python Cassandra driver for schema management/truncation
   - Spark Cassandra connector for bulk writes
+- JMeter benchmark scripts are kept as external `.groovy` files in `scripts/` to avoid XML encoding issues with inline Groovy in JMX files.
 
 ---
 

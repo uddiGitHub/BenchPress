@@ -1,15 +1,80 @@
 #!/bin/bash
+# ==============================================================================
+# BenchPress JMeter Benchmark Runner
+# Based on DLoader paper: "Migration of Data from SQL to NoSQL Databases"
+# Benchmarks MongoDB, Cassandra, and MySQL (baseline) with TPC-H data
+# ==============================================================================
 
-# Clean previous results if they exist
-rm -rf results.jtl jmeter_reports
-mkdir -p jmeter_reports
+set -e
 
-export JMETER_HOME=/opt/homebrew/Cellar/jmeter/5.6.3
+# --- Configuration ---
+THREADS=${1:-5}           # Number of concurrent threads (default: 5)
+LOOPS=${2:-100}           # Number of loops per thread (default: 100)
+REPORT_DIR="jmeter_reports"
+RESULTS_FILE="results.jtl"
+JMX_FILE="benchmark_nosql.jmx"
+
+# JMeter Home (adjust if different)
+export JMETER_HOME=${JMETER_HOME:-/opt/homebrew/Cellar/jmeter/5.6.3}
 export PATH=$JMETER_HOME/bin:$PATH
 
-CLASSPATH="jmeter-libs/HdrHistogram-2.1.12.jar:jmeter-libs/bson-4.8.2.jar:jmeter-libs/config-1.4.1.jar:jmeter-libs/java-driver-core-shaded-4.13.0.jar:jmeter-libs/java-driver-shaded-guava-25.1-jre-graal-sub-1.jar:jmeter-libs/metrics-core-4.1.18.jar:jmeter-libs/mongodb-driver-core-4.8.2.jar:jmeter-libs/mongodb-driver-sync-4.8.2.jar:jmeter-libs/native-protocol-1.5.0.jar:jmeter-libs/reactive-streams-1.0.3.jar"
+# --- Classpath: MongoDB + Cassandra + MySQL drivers ---
+CLASSPATH=""
+for jar in jmeter-libs/*.jar; do
+    if [ -f "$jar" ]; then
+        CLASSPATH="${CLASSPATH}${CLASSPATH:+:}$jar"
+    fi
+done
 
-echo "Running JMeter NoSQL Benchmark..."
-jmeter -n -t benchmark_nosql.jmx -l results.jtl -e -o jmeter_reports -Juser.classpath="$CLASSPATH"
+# Add MySQL connector
+MYSQL_JAR="mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar"
+if [ -f "$MYSQL_JAR" ]; then
+    CLASSPATH="${CLASSPATH}:${MYSQL_JAR}"
+fi
 
-echo "Benchmark complete! Reports generated in jmeter_reports/index.html"
+echo "============================================================"
+echo "  BenchPress - DLoader NoSQL Benchmark (TPC-H)"
+echo "============================================================"
+echo ""
+echo "  Threads:    ${THREADS}"
+echo "  Loops:      ${LOOPS}"
+echo "  JMX File:   ${JMX_FILE}"
+echo "  Results:    ${RESULTS_FILE}"
+echo "  Reports:    ${REPORT_DIR}/index.html"
+echo ""
+echo "  Queries per database:"
+echo "    Q1: Point query (read customer by ID)"
+echo "    Q2: Detail query (customer orders + lineitems)"
+echo "    Q3: Aggregation (count orders by status)"
+echo "    Q4: Range query (customers by region)"
+echo "    Q5: Revenue aggregation (analytical)"
+echo ""
+echo "  Databases:  MongoDB | Cassandra | MySQL (baseline)"
+echo "============================================================"
+echo ""
+
+# Clean previous results
+rm -rf "$RESULTS_FILE" "$REPORT_DIR"
+mkdir -p "$REPORT_DIR"
+
+echo "[$(date '+%H:%M:%S')] Starting JMeter benchmark..."
+echo ""
+
+jmeter -n \
+    -t "$JMX_FILE" \
+    -l "$RESULTS_FILE" \
+    -e -o "$REPORT_DIR" \
+    -JTHREADS="$THREADS" \
+    -JLOOPS="$LOOPS" \
+    -Juser.classpath="$CLASSPATH"
+
+echo ""
+echo "============================================================"
+echo "  Benchmark complete!"
+echo "============================================================"
+echo ""
+echo "  Results:     ${RESULTS_FILE}"
+echo "  HTML Report: ${REPORT_DIR}/index.html"
+echo ""
+echo "  Open report: open ${REPORT_DIR}/index.html"
+echo "============================================================"
