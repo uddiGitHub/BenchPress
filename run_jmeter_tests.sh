@@ -69,12 +69,22 @@ jmeter -n \
     -Juser.classpath="$CLASSPATH"
 
 echo ""
+echo "[$(date '+%H:%M:%S')] JMeter run complete. Generating comparison report..."
+echo ""
+
+# Generate custom comparison report
+python3 generate_report.py "$RESULTS_FILE" "$REPORT_DIR/comparison_report.html"
+
+echo ""
 echo "============================================================"
 echo "  Benchmark complete!"
 echo "============================================================"
 echo ""
-echo "  Results:     ${RESULTS_FILE}"
-echo "  HTML Report: ${REPORT_DIR}/index.html"
+echo "  Results:        ${RESULTS_FILE}"
+echo "  JMeter Report:  ${REPORT_DIR}/index.html"
+echo "  Comparison:     ${REPORT_DIR}/comparison_report.html"
 echo ""
-echo "  Open report: open ${REPORT_DIR}/index.html"
+echo "  Open reports:"
+echo "    open ${REPORT_DIR}/index.html"
+echo "    open ${REPORT_DIR}/comparison_report.html"
 echo "============================================================"

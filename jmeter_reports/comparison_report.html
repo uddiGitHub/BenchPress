@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BenchPress — DLoader Benchmark Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --border: #e9ecef;
+    --text: #212529;
+    --text-secondary: #6c757d;
+    --mongo: #4caf50;
+    --cassandra: #1976d2;
+    --mysql: #ff9800;
+    --differs: #e67e22;
+    --radius: 10px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #1976d2, #4caf50);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.25rem;
+  }
+
+  .header .subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  .header .timestamp {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+  }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  /* Section titles */
+  .section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border);
+  }
+
+  /* Query Map Table */
+  .query-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .query-table thead th {
+    background: #f1f3f5;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    border-bottom: 2px solid var(--border);
+  }
+
+  .query-table tbody td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.875rem;
+    vertical-align: middle;
+  }
+
+  .query-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .query-table tbody tr:hover {
+    background: #f8f9fa;
+  }
+
+  .query-id {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--text);
+    min-width: 40px;
+  }
+
+  /* DB badges */
+  .db-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    min-width: 90px;
+    text-align: center;
+  }
+
+  .db-badge.mongodb { background: var(--mongo); }
+  .db-badge.cassandra { background: var(--cassandra); }
+  .db-badge.mysql { background: var(--mysql); }
+
+  .operation-title {
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+
+  .operation-desc {
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+  }
+
+  .differs-badge {
+    display: inline-block;
+    background: var(--differs);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .script-path {
+    font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  /* Performance Table */
+  .perf-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    margin-top: 0.5rem;
+  }
+
+  .perf-table thead th {
+    background: #f1f3f5;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    border-bottom: 2px solid var(--border);
+  }
+
+  .perf-table thead th:not(:first-child):not(:nth-child(2)) {
+    text-align: right;
+  }
+
+  .perf-table tbody td {
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.875rem;
+  }
+
+  .perf-table tbody td:not(:first-child):not(:nth-child(2)) {
+    text-align: right;
+    font-family: 'SF Mono', 'Menlo', monospace;
+    font-size: 0.82rem;
+  }
+
+  .perf-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .perf-table tbody tr:hover {
+    background: #f8f9fa;
+  }
+
+  .best-value {
+    color: #2e7d32;
+    font-weight: 600;
+  }
+
+  .worst-value {
+    color: #c62828;
+  }
+
+  /* Bar chart */
+  .chart-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .chart-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.25rem;
+  }
+
+  .chart-card h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .bar-group {
+    margin-bottom: 0.75rem;
+  }
+
+  .bar-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 3px;
+  }
+
+  .bar-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .bar {
+    height: 22px;
+    border-radius: 4px;
+    min-width: 2px;
+    transition: width 0.6s ease;
+  }
+
+  .bar.mongodb { background: var(--mongo); }
+  .bar.cassandra { background: var(--cassandra); }
+  .bar.mysql { background: var(--mysql); }
+
+  .bar-value {
+    font-size: 0.78rem;
+    font-family: 'SF Mono', monospace;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer .differs-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer .source {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    font-family: 'SF Mono', monospace;
+  }
+
+  @media (max-width: 768px) {
+    body { padding: 1rem; }
+    .chart-section { grid-template-columns: 1fr; }
+    .query-table { font-size: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>BenchPress — DLoader Benchmark Report</h1>
+    <div class="subtitle">SQL to NoSQL Performance Comparison · TPC-H Dataset</div>
+    <div class="timestamp">Generated 2026-04-20 20:29:08</div>
+  </div>
+
+  <div class="legend">
+    <span class="legend-item"><span class="legend-dot" style="background:var(--mongo)"></span> MongoDB</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--cassandra)"></span> Cassandra</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--mysql)"></span> MySQL</span>
+  </div>
+
+  <!-- ===== QUERY COMPARISON TABLE ===== -->
+  <div class="section-title">Query Comparison</div>
+  <table class="query-table">
+    <thead>
+      <tr>
+        <th>Query</th>
+        <th>Database</th>
+        <th>Operation</th>
+        <th>Script</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="query-id" rowspan="3">Q1</td><td><span class="db-badge cassandra">Cassandra</span></td>
+        <td>
+          <div class="operation-title">Read customer by ID</div>
+          <div class="operation-desc">Partition key row lookup on customer table</div>
+        </td>
+        <td class="script-path">scripts/cassandra_q1.groovy</td>
+      </tr>
+      <tr>
+        <td><span class="db-badge mongodb">MongoDB</span></td>
+        <td>
+          <div class="operation-title">Read customer by ID</div>
+          <div class="operation-desc">Primary key document lookup on customer collection</div>
+        </td>
+        <td class="script-path">scripts/mongo_q1.groovy</td>
+      </tr>
+      <tr>
+        <td><span class="db-badge mysql">MySQL</span></td>
+        <td>
+          <div class="operation-title">Read customer by ID</div>
+          <div class="operation-desc">Indexed SELECT on customer table</div>
+        </td>
+        <td class="script-path">scripts/mysql_q1.groovy</td>
+      </tr>
+      <tr>
+        <td class="query-id" rowspan="3">Q2</td><td><span class="db-badge cassandra">Cassandra</span></td>
+        <td>
+          <div class="operation-title">Read customer orders detail</div>
+          <div class="operation-desc">Partition key scan across orders table</div>
+        </td>
+        <td class="script-path">scripts/cassandra_q2.groovy</td>
+      </tr>
+      <tr>
+        <td><span class="db-badge mongodb">MongoDB</span></td>
+        <td>
+          <div class="operation-title">Read customer orders detail</div>
+          <div class="operation-desc">Embedded / linked orders sub-document lookup</div>
+        </td>
+        <td class="script-path">scripts/mongo_q2.groovy</td>
+      </tr>
+      <tr>
+        <td><span class="db-badge mysql">MySQL</span></td>
+        <td>
+          <div class="operation-title">Read customer orders detail</div>
+          <div class="operation-desc">JOIN across customer & orders tables</div>
+        </td>
+        <td class="script-path">scripts/mysql_q2.groovy</td>
+      </tr>
+      <tr>
+        <td class="query-id" rowspan="3">Q3</td><td><span class="db-badge cassandra">Cassandra</span></td>
+        <td>
+          <div class="operation-title">Aggregation: orders by status <span class="differs-badge">differs</span></div>
+          <div class="operation-desc">COUNT per customer partition — no full aggregation support</div>
+        </td>
+        <td class="script-path">scripts/cassandra_q3.groovy</td>
+      </tr>
+      <tr>
+        <td><span class="db-badge mongodb">MongoDB</span></td>
+        <td>
+          <div class="operation-title">Aggregation: orders by status</div>
+          <div class="operation-desc">Aggregation pipeline — group by order status</div>
+        </td>
+        <td class="script-path">scripts/mongo_q3.groovy</td>
+      </tr>
+      <tr>
+        <td><span class="db-badge mysql">MySQL</span></td>
+        <td>
+          <div class="operation-title">Aggregation: orders by status</div>
+          <div class="operation-desc">GROUP BY on order status column</div>
+        </td>
+        <td class="script-path">scripts/mysql_q3.groovy</td>
+      </tr>
+      <tr>
+        <td class="query-id" rowspan="3">Q4</td><td><span class="db-badge cassandra">Cassandra</span></td>
+        <td>
+          <div class="operation-title">Range / filter query <span class="differs-badge">differs</span></div>
+          <div class="operation-desc">Filtered scan on lineitems return flag — no cross-partition range</div>
+        </td>
+        <td class="script-path">scripts/cassandra_q4.groovy</td>
+      </tr>
+      <tr>
+        <td><span class="db-badge mongodb">MongoDB</span></td>
+        <td>
+          <div class="operation-title">Range / filter query</div>
+          <div class="operation-desc">Range filter on nation / region field</div>
+        </td>
+        <td class="script-path">scripts/mongo_q4.groovy</td>
+      </tr>
+      <tr>
+        <td><span class="db-badge mysql">MySQL</span></td>
+        <td>
+          <div class="operation-title">Range / filter query</div>
+          <div class="operation-desc">JOIN + WHERE clause filtering by region</div>
+        </td>
+        <td class="script-path">scripts/mysql_q4.groovy</td>
+      </tr>
+      <tr>
+        <td class="query-id" rowspan="3">Q5</td><td><span class="db-badge cassandra">Cassandra</span></td>
+        <td>
+          <div class="operation-title">Revenue aggregation</div>
+          <div class="operation-desc">SUM aggregation on lineitems partition</div>
+        </td>
+        <td class="script-path">scripts/cassandra_q5.groovy</td>
+      </tr>
+      <tr>
+        <td><span class="db-badge mongodb">MongoDB</span></td>
+        <td>
+          <div class="operation-title">Revenue aggregation</div>
+          <div class="operation-desc">Pipeline SUM of extended price across lineitems</div>
+        </td>
+        <td class="script-path">scripts/mongo_q5.groovy</td>
+      </tr>
+      <tr>
+        <td><span class="db-badge mysql">MySQL</span></td>
+        <td>
+          <div class="operation-title">Revenue aggregation</div>
+          <div class="operation-desc">SUM with multi-table JOIN on TPC-H schema</div>
+        </td>
+        <td class="script-path">scripts/mysql_q5.groovy</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Performance Results</div>
+  <table class="perf-table">
+    <thead>
+      <tr>
+        <th>Query</th>
+        <th>Database</th>
+        <th>Samples</th>
+        <th>Avg (ms)</th>
+        <th>Min (ms)</th>
+        <th>Max (ms)</th>
+        <th>Throughput</th>
+        <th>Error %</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="query-id" rowspan="3">Q1</td><td><span class="db-badge cassandra">Cassandra</span></td>
+        <td>500</td>
+        <td class="best-value">3.6</td>
+        <td>0</td>
+        <td>575</td>
+        <td>273.97/s</td>
+        <td>0.0%</td>
+      </tr>
+      <tr>
+        <td><span class="db-badge mongodb">MongoDB</span></td>
+        <td>500</td>
+        <td class="worst-value">43.5</td>
+        <td>0</td>
+        <td>1174</td>
+        <td>22.97/s</td>
+        <td>0.0%</td>
+      </tr>
+      <tr>
+        <td><span class="db-badge mysql">MySQL</span></td>
+        <td>500</td>
+        <td>11.8</td>
+        <td>0</td>
+        <td>305</td>
+        <td>84.46/s</td>
+        <td>0.0%</td>
+      </tr>
+      <tr>
+        <td class="query-id" rowspan="3">Q2</td><td><span class="db-badge cassandra">Cassandra</span></td>
+        <td>500</td>
+        <td class="best-value">2.5</td>
+        <td>0</td>
+        <td>54</td>
+        <td>399.36/s</td>
+        <td>0.0%</td>
+      </tr>
+      <tr>
+        <td><span class="db-badge mongodb">MongoDB</span></td>
+        <td>500</td>
+        <td class="worst-value">76.7</td>
+        <td>51</td>
+        <td>511</td>
+        <td>13.04/s</td>
+        <td>0.0%</td>
+      </tr>
+      <tr>
+        <td><span class="db-badge mysql">MySQL</span></td>
+        <td>500</td>
+        <td>20.1</td>
+        <td>0</td>
+        <td>159</td>
+        <td>49.65/s</td>
+        <td>0.0%</td>
+      </tr>
+      <tr>
+        <td class="query-id" rowspan="3">Q3</td><td><span class="db-badge cassandra">Cassandra</span></td>
+        <td>500</td>
+        <td class="best-value">2.0</td>
+        <td>0</td>
+        <td>26</td>
+        <td>508.65/s</td>
+        <td>0.0%</td>
+      </tr>
+      <tr>
+        <td><span class="db-badge mongodb">MongoDB</span></td>
+        <td>500</td>
+        <td class="worst-value">73.0</td>
+        <td>49</td>
+        <td>195</td>
+        <td>13.7/s</td>
+        <td>0.0%</td>
+      </tr>
+      <tr>
+        <td><span class="db-badge mysql">MySQL</span></td>
+        <td>500</td>
+        <td>13.4</td>
+        <td>0</td>
+        <td>112</td>
+        <td>74.62/s</td>
+        <td>0.0%</td>
+      </tr>
+      <tr>
+        <td class="query-id" rowspan="3">Q4</td><td><span class="db-badge cassandra">Cassandra</span></td>
+        <td>500</td>
+        <td class="best-value">2.2</td>
+        <td>0</td>
+        <td>31</td>
+        <td>457.88/s</td>
+        <td>0.0%</td>
+      </tr>
+      <tr>
+        <td><span class="db-badge mongodb">MongoDB</span></td>
+        <td>500</td>
+        <td class="worst-value">79.0</td>
+        <td>63</td>
+        <td>174</td>
+        <td>12.66/s</td>
+        <td>0.0%</td>
+      </tr>
+      <tr>
+        <td><span class="db-badge mysql">MySQL</span></td>
+        <td>500</td>
+        <td>12.4</td>
+        <td>0</td>
+        <td>89</td>
+        <td>80.42/s</td>
+        <td>0.0%</td>
+      </tr>
+      <tr>
+        <td class="query-id" rowspan="3">Q5</td><td><span class="db-badge cassandra">Cassandra</span></td>
+        <td>500</td>
+        <td class="best-value">3.0</td>
+        <td>0</td>
+        <td>84</td>
+        <td>332.67/s</td>
+        <td>0.0%</td>
+      </tr>
+      <tr>
+        <td><span class="db-badge mongodb">MongoDB</span></td>
+        <td>500</td>
+        <td class="worst-value">82.4</td>
+        <td>64</td>
+        <td>192</td>
+        <td>12.14/s</td>
+        <td>0.0%</td>
+      </tr>
+      <tr>
+        <td><span class="db-badge mysql">MySQL</span></td>
+        <td>500</td>
+        <td>43.6</td>
+        <td>9</td>
+        <td>309</td>
+        <td>22.94/s</td>
+        <td>0.0%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Response Time Comparison</div>
+  <div class="chart-section">
+    <div class="chart-card">
+      <h3>Q1 — Read customer by ID</h3>
+      <div class="bar-group">
+        <div class="bar-label">Cassandra</div>
+        <div class="bar-container">
+          <div class="bar cassandra" style="width:8.275862068965518%"></div>
+          <span class="bar-value">3.6 ms</span>
+        </div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-label">MongoDB</div>
+        <div class="bar-container">
+          <div class="bar mongodb" style="width:100.0%"></div>
+          <span class="bar-value">43.5 ms</span>
+        </div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-label">MySQL</div>
+        <div class="bar-container">
+          <div class="bar mysql" style="width:27.126436781609197%"></div>
+          <span class="bar-value">11.8 ms</span>
+        </div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3>Q2 — Read customer orders detail</h3>
+      <div class="bar-group">
+        <div class="bar-label">Cassandra</div>
+        <div class="bar-container">
+          <div class="bar cassandra" style="width:3.259452411994785%"></div>
+          <span class="bar-value">2.5 ms</span>
+        </div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-label">MongoDB</div>
+        <div class="bar-container">
+          <div class="bar mongodb" style="width:100.0%"></div>
+          <span class="bar-value">76.7 ms</span>
+        </div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-label">MySQL</div>
+        <div class="bar-container">
+          <div class="bar mysql" style="width:26.205997392438075%"></div>
+          <span class="bar-value">20.1 ms</span>
+        </div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3>Q3 — Aggregation: orders by status</h3>
+      <div class="bar-group">
+        <div class="bar-label">Cassandra</div>
+        <div class="bar-container">
+          <div class="bar cassandra" style="width:2.73972602739726%"></div>
+          <span class="bar-value">2.0 ms</span>
+        </div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-label">MongoDB</div>
+        <div class="bar-container">
+          <div class="bar mongodb" style="width:100.0%"></div>
+          <span class="bar-value">73.0 ms</span>
+        </div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-label">MySQL</div>
+        <div class="bar-container">
+          <div class="bar mysql" style="width:18.356164383561644%"></div>
+          <span class="bar-value">13.4 ms</span>
+        </div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3>Q4 — Range / filter query</h3>
+      <div class="bar-group">
+        <div class="bar-label">Cassandra</div>
+        <div class="bar-container">
+          <div class="bar cassandra" style="width:2.7848101265822787%"></div>
+          <span class="bar-value">2.2 ms</span>
+        </div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-label">MongoDB</div>
+        <div class="bar-container">
+          <div class="bar mongodb" style="width:100.0%"></div>
+          <span class="bar-value">79.0 ms</span>
+        </div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-label">MySQL</div>
+        <div class="bar-container">
+          <div class="bar mysql" style="width:15.69620253164557%"></div>
+          <span class="bar-value">12.4 ms</span>
+        </div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3>Q5 — Revenue aggregation</h3>
+      <div class="bar-group">
+        <div class="bar-label">Cassandra</div>
+        <div class="bar-container">
+          <div class="bar cassandra" style="width:3.640776699029126%"></div>
+          <span class="bar-value">3.0 ms</span>
+        </div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-label">MongoDB</div>
+        <div class="bar-container">
+          <div class="bar mongodb" style="width:100.0%"></div>
+          <span class="bar-value">82.4 ms</span>
+        </div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-label">MySQL</div>
+        <div class="bar-container">
+          <div class="bar mysql" style="width:52.9126213592233%"></div>
+          <span class="bar-value">43.6 ms</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="differs-note">
+      <span class="differs-badge">differs</span>
+      <span>Cassandra's partition-key model required a different query approach for Q3 and Q4 compared to MongoDB and MySQL.</span>
+    </div>
+    <div class="source">Source: benchmark_nosql.jmx · TPC-H 1 GB dataset · 5 threads · 100 loops</div>
+  </div>
+
+</div>
+</body>
+</html>
