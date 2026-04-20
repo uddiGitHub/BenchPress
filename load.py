@@ -143,6 +143,10 @@ def load_to_cassandra(df, table_name="customer_orders", truncate_first=False):
             keyspace=keyspace,
             table=table_name
         ) \
+        .option("spark.cassandra.output.batch.size.rows", "200") \
+        .option("spark.cassandra.output.concurrent.writes", "2") \
+        .option("spark.cassandra.output.batch.grouping.key", "None") \
+        .option("spark.cassandra.connection.timeoutMS", "60000") \
         .mode("append") \
         .save()
     print(f"✅ Loaded data into Cassandra table {keyspace}.{table_name}.")
