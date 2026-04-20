@@ -1,0 +1,50 @@
+{
+  "MongoDB - Read Random Customer" : {
+    "transaction" : "MongoDB - Read Random Customer",
+    "sampleCount" : 500,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 63.318000000000076,
+    "medianResTime" : 37.0,
+    "minResTime" : 1.0,
+    "maxResTime" : 2723.0,
+    "pct1ResTime" : 69.0,
+    "pct2ResTime" : 76.0,
+    "pct3ResTime" : 1293.7900000000002,
+    "throughput" : 72.50580046403712,
+    "receivedKBytesPerSec" : 1203.3368528857309,
+    "sentKBytesPerSec" : 0.0
+  },
+  "Total" : {
+    "transaction" : "Total",
+    "sampleCount" : 1000,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 39.39300000000002,
+    "medianResTime" : 11.5,
+    "minResTime" : 1.0,
+    "maxResTime" : 2723.0,
+    "pct1ResTime" : 60.0,
+    "pct2ResTime" : 70.0,
+    "pct3ResTime" : 652.1300000000026,
+    "throughput" : 145.01160092807424,
+    "receivedKBytesPerSec" : 1205.5998268924013,
+    "sentKBytesPerSec" : 0.0
+  },
+  "Cassandra - Read Random Customer" : {
+    "transaction" : "Cassandra - Read Random Customer",
+    "sampleCount" : 500,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 15.468000000000004,
+    "medianResTime" : 6.0,
+    "minResTime" : 1.0,
+    "maxResTime" : 1261.0,
+    "pct1ResTime" : 13.0,
+    "pct2ResTime" : 19.0,
+    "pct3ResTime" : 355.89000000000283,
+    "throughput" : 252.52525252525254,
+    "receivedKBytesPerSec" : 7.881549873737374,
+    "sentKBytesPerSec" : 0.0
+  }
+}

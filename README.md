@@ -255,7 +255,7 @@ CASSANDRA_KEYSPACE=tpch1gb
 Run the pipeline from the project root:
 
 ```bash
-python main.py
+spark-submit --packages com.datastax.spark:spark-cassandra-connector_2.12:3.5.0,org.mongodb.spark:mongo-spark-connector_2.12:10.3.0,com.mysql:mysql-connector-j:8.0.33,com.github.jnr:jnr-posix:3.1.15 --driver-memory 6g --executor-memory 6g main.py
 ```
 
 If your environment requires `JAVA_HOME`, set it first, for example on macOS:
