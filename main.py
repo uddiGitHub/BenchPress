@@ -2,7 +2,7 @@ from extract import extract_tpch_tables
 from stagging import stage_to_local
 from transform import transform_data
 from mapping import map_to_Mongos, map_to_cassandra, apply_partitioning
-from load import load_parquet_to_mongodb, create_cassandra_keyspace_and_table, load_to_cassandra
+from load import load_parquet_to_mongodb,convert_doc,create_cassandra_keyspace_and_table, load_to_cassandra
 import os
 
 def main():
@@ -15,6 +15,8 @@ def main():
     # MongoDB path: nested documents
     doc_df_mongos = map_to_Mongos(denorm_df)
     doc_df_mongos = apply_partitioning(doc_df_mongos)
+
+    doc_df_mongos = convert_doc(doc_df_mongos)
 
     temp_parquet_path = "data/final_customersMongos.parquet"
     doc_df_mongos.write.mode("overwrite").parquet(temp_parquet_path)
