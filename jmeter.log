@@ -1,120 +1,120 @@
-2026-04-21 12:17:13,897 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
-2026-04-21 12:17:13,914 INFO o.a.j.JMeter: Loading user properties from: /opt/homebrew/Cellar/jmeter/5.6.3/libexec/bin/user.properties
-2026-04-21 12:17:13,914 INFO o.a.j.JMeter: Loading system properties from: /opt/homebrew/Cellar/jmeter/5.6.3/libexec/bin/system.properties
-2026-04-21 12:17:13,915 INFO o.a.j.JMeter: Setting JMeter property: THREADS=5
-2026-04-21 12:17:13,915 INFO o.a.j.JMeter: Setting JMeter property: LOOPS=100
-2026-04-21 12:17:13,915 INFO o.a.j.JMeter: Setting JMeter property: user.classpath=jmeter-libs/HdrHistogram-2.1.12.jar:jmeter-libs/bson-4.8.2.jar:jmeter-libs/config-1.4.1.jar:jmeter-libs/java-driver-core-shaded-4.13.0.jar:jmeter-libs/java-driver-shaded-guava-25.1-jre-graal-sub-1.jar:jmeter-libs/metrics-core-4.1.18.jar:jmeter-libs/mongodb-driver-core-4.8.2.jar:jmeter-libs/mongodb-driver-sync-4.8.2.jar:jmeter-libs/native-protocol-1.5.0.jar:jmeter-libs/reactive-streams-1.0.3.jar:mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar
-2026-04-21 12:17:13,918 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
-2026-04-21 12:17:13,919 INFO o.a.j.JMeter: Version 5.6.3
-2026-04-21 12:17:13,919 INFO o.a.j.JMeter: java.version=21.0.10
-2026-04-21 12:17:13,919 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
-2026-04-21 12:17:13,919 INFO o.a.j.JMeter: os.name=Mac OS X
-2026-04-21 12:17:13,919 INFO o.a.j.JMeter: os.arch=aarch64
-2026-04-21 12:17:13,919 INFO o.a.j.JMeter: os.version=26.4.1
-2026-04-21 12:17:13,919 INFO o.a.j.JMeter: file.encoding=UTF-8
-2026-04-21 12:17:13,919 INFO o.a.j.JMeter: java.awt.headless=true
-2026-04-21 12:17:13,919 INFO o.a.j.JMeter: Max memory     =1073741824
-2026-04-21 12:17:13,919 INFO o.a.j.JMeter: Available Processors =10
-2026-04-21 12:17:13,926 INFO o.a.j.JMeter: Default Locale=English (EN)
-2026-04-21 12:17:13,926 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
-2026-04-21 12:17:13,927 INFO o.a.j.JMeter: JMeterHome=/opt/homebrew/Cellar/jmeter/5.6.3/libexec
-2026-04-21 12:17:13,927 INFO o.a.j.JMeter: user.dir  =/Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress
-2026-04-21 12:17:13,927 INFO o.a.j.JMeter: PWD       =/Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress
-2026-04-21 12:17:13,929 INFO o.a.j.JMeter: IP: 127.0.0.1 Name: Uddis-MacBook-Air.local FullName: localhost
-2026-04-21 12:17:13,929 INFO o.a.j.JMeter: user.classpath=jmeter-libs/HdrHistogram-2.1.12.jar:jmeter-libs/bson-4.8.2.jar:jmeter-libs/config-1.4.1.jar:jmeter-libs/java-driver-core-shaded-4.13.0.jar:jmeter-libs/java-driver-shaded-guava-25.1-jre-graal-sub-1.jar:jmeter-libs/metrics-core-4.1.18.jar:jmeter-libs/mongodb-driver-core-4.8.2.jar:jmeter-libs/mongodb-driver-sync-4.8.2.jar:jmeter-libs/native-protocol-1.5.0.jar:jmeter-libs/reactive-streams-1.0.3.jar:mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar
-2026-04-21 12:17:13,929 INFO o.a.j.JMeter: Adding to classpath and loader: jmeter-libs/HdrHistogram-2.1.12.jar
-2026-04-21 12:17:13,929 INFO o.a.j.JMeter: Adding to classpath and loader: jmeter-libs/bson-4.8.2.jar
-2026-04-21 12:17:13,929 INFO o.a.j.JMeter: Adding to classpath and loader: jmeter-libs/config-1.4.1.jar
-2026-04-21 12:17:13,930 INFO o.a.j.JMeter: Adding to classpath and loader: jmeter-libs/java-driver-core-shaded-4.13.0.jar
-2026-04-21 12:17:13,930 INFO o.a.j.JMeter: Adding to classpath and loader: jmeter-libs/java-driver-shaded-guava-25.1-jre-graal-sub-1.jar
-2026-04-21 12:17:13,930 INFO o.a.j.JMeter: Adding to classpath and loader: jmeter-libs/metrics-core-4.1.18.jar
-2026-04-21 12:17:13,930 INFO o.a.j.JMeter: Adding to classpath and loader: jmeter-libs/mongodb-driver-core-4.8.2.jar
-2026-04-21 12:17:13,930 INFO o.a.j.JMeter: Adding to classpath and loader: jmeter-libs/mongodb-driver-sync-4.8.2.jar
-2026-04-21 12:17:13,930 INFO o.a.j.JMeter: Adding to classpath and loader: jmeter-libs/native-protocol-1.5.0.jar
-2026-04-21 12:17:13,930 INFO o.a.j.JMeter: Adding to classpath and loader: jmeter-libs/reactive-streams-1.0.3.jar
-2026-04-21 12:17:13,931 INFO o.a.j.JMeter: Adding to classpath and loader: mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar
-2026-04-21 12:17:13,947 INFO o.a.j.JMeter: Setting property 'jmeter.reportgenerator.outputdir' to:'/Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress/jmeter_reports'
-2026-04-21 12:17:13,949 INFO o.a.j.s.FileServer: Default base='/Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress'
-2026-04-21 12:17:13,950 INFO o.a.j.s.FileServer: Set new base='/Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress'
-2026-04-21 12:17:14,062 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
-2026-04-21 12:17:14,083 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
-2026-04-21 12:17:14,085 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
-2026-04-21 12:17:14,087 INFO o.a.j.s.SaveService: Loading file: benchmark_nosql.jmx
-2026-04-21 12:17:14,148 INFO o.a.j.JMeter: Creating summariser <summary>
-2026-04-21 12:17:14,150 INFO o.a.j.r.d.ReportGenerator: ReportGenerator will use for Parsing the separator: ','
-2026-04-21 12:17:14,150 INFO o.a.j.r.d.ReportGenerator: Will generate report at end of test from  results file: results.jtl
-2026-04-21 12:17:14,150 INFO o.a.j.r.d.ReportGenerator: Reading report generator properties from: /opt/homebrew/Cellar/jmeter/5.6.3/libexec/bin/reportgenerator.properties
-2026-04-21 12:17:14,151 INFO o.a.j.r.d.ReportGenerator: Merging with JMeter properties
-2026-04-21 12:17:14,153 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.temp_dir' not found, using default value 'temp' instead.
-2026-04-21 12:17:14,155 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.apdex_per_transaction' not found, using default value 'null' instead.
-2026-04-21 12:17:14,160 INFO o.a.j.r.c.ReportGeneratorConfiguration: apdex_per_transaction is empty, not APDEX per transaction customization
-2026-04-21 12:17:14,160 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.sample_filter' not found, using default value 'null' instead.
-2026-04-21 12:17:14,161 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.report_title' not found, using default value 'null' instead.
-2026-04-21 12:17:14,161 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.start_date' not found, using default value 'null' instead.
-2026-04-21 12:17:14,161 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.end_date' not found, using default value 'null' instead.
-2026-04-21 12:17:14,161 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.date_format' not found, using default value 'null' instead.
-2026-04-21 12:17:14,161 INFO o.a.j.r.c.ReportGeneratorConfiguration: Will use date range start date: null, end date: null
-2026-04-21 12:17:14,163 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.totalTPS.exclude_controllers' not found, using default value 'false' instead.
-2026-04-21 12:17:14,164 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.activeThreadsOverTime.exclude_controllers' not found, using default value 'false' instead.
-2026-04-21 12:17:14,164 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.timeVsThreads.exclude_controllers' not found, using default value 'false' instead.
-2026-04-21 12:17:14,164 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimeDistribution.exclude_controllers' not found, using default value 'false' instead.
-2026-04-21 12:17:14,164 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.transactionsPerSecond.exclude_controllers' not found, using default value 'false' instead.
-2026-04-21 12:17:14,164 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimePercentiles.exclude_controllers' not found, using default value 'false' instead.
-2026-04-21 12:17:14,164 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimePercentilesOverTime.exclude_controllers' not found, using default value 'false' instead.
-2026-04-21 12:17:14,164 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimesOverTime.exclude_controllers' not found, using default value 'false' instead.
-2026-04-21 12:17:14,164 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.connectTimeOverTime.exclude_controllers' not found, using default value 'false' instead.
-2026-04-21 12:17:14,164 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.latenciesOverTime.exclude_controllers' not found, using default value 'false' instead.
-2026-04-21 12:17:14,165 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.filters_only_sample_series' not found, using default value 'true' instead.
-2026-04-21 12:17:14,165 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.series_filter' not found, using default value '' instead.
-2026-04-21 12:17:14,165 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.show_controllers_only' not found, using default value 'false' instead.
-2026-04-21 12:17:14,165 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.filters_only_sample_series' not found, using default value 'true' instead.
-2026-04-21 12:17:14,165 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.series_filter' not found, using default value '' instead.
-2026-04-21 12:17:14,165 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.show_controllers_only' not found, using default value 'false' instead.
-2026-04-21 12:17:14,174 INFO o.a.j.e.StandardJMeterEngine: Running the test!
-2026-04-21 12:17:14,174 INFO o.a.j.s.SampleEvent: List of sample_variables: []
-2026-04-21 12:17:14,174 INFO o.a.j.s.SampleEvent: List of sample_variables: []
-2026-04-21 12:17:14,177 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
-2026-04-21 12:17:14,177 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
-2026-04-21 12:17:14,203 INFO o.a.j.r.ClassFinder: Will scan jar /opt/homebrew/Cellar/jmeter/5.6.3/libexec/lib/ext/jmeter-plugins-manager-1.9.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.functions.Function], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
-2026-04-21 12:17:14,395 INFO o.a.j.JMeter: Running test (1776754034395)
-2026-04-21 12:17:14,407 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : MongoDB Benchmark
-2026-04-21 12:17:14,407 INFO o.a.j.e.StandardJMeterEngine: Starting 5 threads for group MongoDB Benchmark.
-2026-04-21 12:17:14,407 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
-2026-04-21 12:17:14,407 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=5 ramp-up=1 delayedStart=false
-2026-04-21 12:17:14,411 INFO o.a.j.t.ThreadGroup: Started thread group number 1
-2026-04-21 12:17:14,411 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: MongoDB Benchmark to finish before starting next group
-2026-04-21 12:17:14,412 INFO o.a.j.t.JMeterThread: Thread started: MongoDB Benchmark 1-1
-2026-04-21 12:17:14,413 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
-2026-04-21 12:17:14,413 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
-2026-04-21 12:17:14,413 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
-2026-04-21 12:17:14,413 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
-2026-04-21 12:17:14,615 INFO o.a.j.t.JMeterThread: Thread started: MongoDB Benchmark 1-2
-2026-04-21 12:17:14,811 INFO o.a.j.t.JMeterThread: Thread started: MongoDB Benchmark 1-3
-2026-04-21 12:17:14,945 INFO o.m.d.client: MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync", "version": "4.8.2"}, "os": {"type": "Darwin", "name": "Mac OS X", "architecture": "aarch64", "version": "26.4.1"}, "platform": "Java/Homebrew/21.0.10"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.Jep395RecordCodecProvider@7e60dba7]}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=UNSPECIFIED, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
-2026-04-21 12:17:14,963 INFO o.m.d.cluster: Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=14834042}
-2026-04-21 12:17:15,015 INFO o.a.j.t.JMeterThread: Thread started: MongoDB Benchmark 1-4
-2026-04-21 12:17:15,212 INFO o.a.j.t.JMeterThread: Thread started: MongoDB Benchmark 1-5
-2026-04-21 12:17:30,003 INFO o.a.j.r.Summariser: summary +   1016 in 00:00:16 =   65.1/s Avg:    74 Min:     1 Max:  1607 Err:     0 (0.00%) Active: 5 Started: 5 Finished: 0
-2026-04-21 12:17:50,062 INFO o.a.j.t.JMeterThread: Thread is done: MongoDB Benchmark 1-5
-2026-04-21 12:17:50,063 INFO o.a.j.t.JMeterThread: Thread finished: MongoDB Benchmark 1-5
-2026-04-21 12:17:50,092 INFO o.a.j.t.JMeterThread: Thread is done: MongoDB Benchmark 1-1
-2026-04-21 12:17:50,093 INFO o.a.j.t.JMeterThread: Thread finished: MongoDB Benchmark 1-1
-2026-04-21 12:17:50,181 INFO o.a.j.t.JMeterThread: Thread is done: MongoDB Benchmark 1-2
-2026-04-21 12:17:50,182 INFO o.a.j.t.JMeterThread: Thread finished: MongoDB Benchmark 1-2
-2026-04-21 12:17:50,328 INFO o.a.j.t.JMeterThread: Thread is done: MongoDB Benchmark 1-3
-2026-04-21 12:17:50,329 INFO o.a.j.t.JMeterThread: Thread finished: MongoDB Benchmark 1-3
-2026-04-21 12:17:50,355 INFO o.a.j.t.JMeterThread: Thread is done: MongoDB Benchmark 1-4
-2026-04-21 12:17:50,356 INFO o.a.j.t.JMeterThread: Thread finished: MongoDB Benchmark 1-4
-2026-04-21 12:17:50,356 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 2 : Cassandra Benchmark
-2026-04-21 12:17:50,356 INFO o.a.j.e.StandardJMeterEngine: Starting 5 threads for group Cassandra Benchmark.
-2026-04-21 12:17:50,356 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
-2026-04-21 12:17:50,356 INFO o.a.j.t.ThreadGroup: Starting thread group... number=2 threads=5 ramp-up=1 delayedStart=false
-2026-04-21 12:17:50,358 INFO o.a.j.t.JMeterThread: Thread started: Cassandra Benchmark 2-1
-2026-04-21 12:17:50,359 INFO o.a.j.t.ThreadGroup: Started thread group number 2
-2026-04-21 12:17:50,359 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Cassandra Benchmark to finish before starting next group
-2026-04-21 12:17:50,546 INFO c.d.o.d.i.c.DefaultMavenCoordinates: DataStax Java driver for Apache Cassandra(R) (com.datastax.oss:java-driver-core-shaded) version 4.13.0
-2026-04-21 12:17:50,558 INFO o.a.j.t.JMeterThread: Thread started: Cassandra Benchmark 2-2
-2026-04-21 12:17:50,618 INFO c.d.o.d.i.c.o.Native: Unable to load JNR native implementation. This could be normal if JNR is excluded from the classpath
+2026-04-28 14:48:47,260 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2026-04-28 14:48:47,278 INFO o.a.j.JMeter: Loading user properties from: /opt/homebrew/Cellar/jmeter/5.6.3/libexec/bin/user.properties
+2026-04-28 14:48:47,278 INFO o.a.j.JMeter: Loading system properties from: /opt/homebrew/Cellar/jmeter/5.6.3/libexec/bin/system.properties
+2026-04-28 14:48:47,279 INFO o.a.j.JMeter: Setting JMeter property: THREADS=5
+2026-04-28 14:48:47,279 INFO o.a.j.JMeter: Setting JMeter property: LOOPS=100
+2026-04-28 14:48:47,279 INFO o.a.j.JMeter: Setting JMeter property: user.classpath=jmeter-libs/HdrHistogram-2.1.12.jar:jmeter-libs/bson-4.8.2.jar:jmeter-libs/config-1.4.1.jar:jmeter-libs/java-driver-core-shaded-4.13.0.jar:jmeter-libs/java-driver-shaded-guava-25.1-jre-graal-sub-1.jar:jmeter-libs/metrics-core-4.1.18.jar:jmeter-libs/mongodb-driver-core-4.8.2.jar:jmeter-libs/mongodb-driver-sync-4.8.2.jar:jmeter-libs/native-protocol-1.5.0.jar:jmeter-libs/reactive-streams-1.0.3.jar:mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar
+2026-04-28 14:48:47,282 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2026-04-28 14:48:47,282 INFO o.a.j.JMeter: Version 5.6.3
+2026-04-28 14:48:47,282 INFO o.a.j.JMeter: java.version=21.0.10
+2026-04-28 14:48:47,283 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2026-04-28 14:48:47,283 INFO o.a.j.JMeter: os.name=Mac OS X
+2026-04-28 14:48:47,283 INFO o.a.j.JMeter: os.arch=aarch64
+2026-04-28 14:48:47,283 INFO o.a.j.JMeter: os.version=26.4.1
+2026-04-28 14:48:47,283 INFO o.a.j.JMeter: file.encoding=UTF-8
+2026-04-28 14:48:47,283 INFO o.a.j.JMeter: java.awt.headless=true
+2026-04-28 14:48:47,283 INFO o.a.j.JMeter: Max memory     =1073741824
+2026-04-28 14:48:47,283 INFO o.a.j.JMeter: Available Processors =10
+2026-04-28 14:48:47,290 INFO o.a.j.JMeter: Default Locale=English (EN)
+2026-04-28 14:48:47,290 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2026-04-28 14:48:47,290 INFO o.a.j.JMeter: JMeterHome=/opt/homebrew/Cellar/jmeter/5.6.3/libexec
+2026-04-28 14:48:47,290 INFO o.a.j.JMeter: user.dir  =/Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress
+2026-04-28 14:48:47,290 INFO o.a.j.JMeter: PWD       =/Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress
+2026-04-28 14:48:47,293 INFO o.a.j.JMeter: IP: 127.0.0.1 Name: Uddis-MacBook-Air.local FullName: localhost
+2026-04-28 14:48:47,293 INFO o.a.j.JMeter: user.classpath=jmeter-libs/HdrHistogram-2.1.12.jar:jmeter-libs/bson-4.8.2.jar:jmeter-libs/config-1.4.1.jar:jmeter-libs/java-driver-core-shaded-4.13.0.jar:jmeter-libs/java-driver-shaded-guava-25.1-jre-graal-sub-1.jar:jmeter-libs/metrics-core-4.1.18.jar:jmeter-libs/mongodb-driver-core-4.8.2.jar:jmeter-libs/mongodb-driver-sync-4.8.2.jar:jmeter-libs/native-protocol-1.5.0.jar:jmeter-libs/reactive-streams-1.0.3.jar:mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar
+2026-04-28 14:48:47,293 INFO o.a.j.JMeter: Adding to classpath and loader: jmeter-libs/HdrHistogram-2.1.12.jar
+2026-04-28 14:48:47,293 INFO o.a.j.JMeter: Adding to classpath and loader: jmeter-libs/bson-4.8.2.jar
+2026-04-28 14:48:47,294 INFO o.a.j.JMeter: Adding to classpath and loader: jmeter-libs/config-1.4.1.jar
+2026-04-28 14:48:47,294 INFO o.a.j.JMeter: Adding to classpath and loader: jmeter-libs/java-driver-core-shaded-4.13.0.jar
+2026-04-28 14:48:47,294 INFO o.a.j.JMeter: Adding to classpath and loader: jmeter-libs/java-driver-shaded-guava-25.1-jre-graal-sub-1.jar
+2026-04-28 14:48:47,294 INFO o.a.j.JMeter: Adding to classpath and loader: jmeter-libs/metrics-core-4.1.18.jar
+2026-04-28 14:48:47,294 INFO o.a.j.JMeter: Adding to classpath and loader: jmeter-libs/mongodb-driver-core-4.8.2.jar
+2026-04-28 14:48:47,294 INFO o.a.j.JMeter: Adding to classpath and loader: jmeter-libs/mongodb-driver-sync-4.8.2.jar
+2026-04-28 14:48:47,295 INFO o.a.j.JMeter: Adding to classpath and loader: jmeter-libs/native-protocol-1.5.0.jar
+2026-04-28 14:48:47,295 INFO o.a.j.JMeter: Adding to classpath and loader: jmeter-libs/reactive-streams-1.0.3.jar
+2026-04-28 14:48:47,295 INFO o.a.j.JMeter: Adding to classpath and loader: mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar
+2026-04-28 14:48:47,312 INFO o.a.j.JMeter: Setting property 'jmeter.reportgenerator.outputdir' to:'/Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress/jmeter_reports'
+2026-04-28 14:48:47,314 INFO o.a.j.s.FileServer: Default base='/Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress'
+2026-04-28 14:48:47,315 INFO o.a.j.s.FileServer: Set new base='/Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress'
+2026-04-28 14:48:47,428 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2026-04-28 14:48:47,449 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2026-04-28 14:48:47,451 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2026-04-28 14:48:47,452 INFO o.a.j.s.SaveService: Loading file: benchmark_nosql.jmx
+2026-04-28 14:48:47,513 INFO o.a.j.JMeter: Creating summariser <summary>
+2026-04-28 14:48:47,515 INFO o.a.j.r.d.ReportGenerator: ReportGenerator will use for Parsing the separator: ','
+2026-04-28 14:48:47,516 INFO o.a.j.r.d.ReportGenerator: Will generate report at end of test from  results file: results.jtl
+2026-04-28 14:48:47,516 INFO o.a.j.r.d.ReportGenerator: Reading report generator properties from: /opt/homebrew/Cellar/jmeter/5.6.3/libexec/bin/reportgenerator.properties
+2026-04-28 14:48:47,516 INFO o.a.j.r.d.ReportGenerator: Merging with JMeter properties
+2026-04-28 14:48:47,519 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.temp_dir' not found, using default value 'temp' instead.
+2026-04-28 14:48:47,520 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.apdex_per_transaction' not found, using default value 'null' instead.
+2026-04-28 14:48:47,526 INFO o.a.j.r.c.ReportGeneratorConfiguration: apdex_per_transaction is empty, not APDEX per transaction customization
+2026-04-28 14:48:47,526 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.sample_filter' not found, using default value 'null' instead.
+2026-04-28 14:48:47,527 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.report_title' not found, using default value 'null' instead.
+2026-04-28 14:48:47,527 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.start_date' not found, using default value 'null' instead.
+2026-04-28 14:48:47,527 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.end_date' not found, using default value 'null' instead.
+2026-04-28 14:48:47,527 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.date_format' not found, using default value 'null' instead.
+2026-04-28 14:48:47,527 INFO o.a.j.r.c.ReportGeneratorConfiguration: Will use date range start date: null, end date: null
+2026-04-28 14:48:47,529 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.totalTPS.exclude_controllers' not found, using default value 'false' instead.
+2026-04-28 14:48:47,530 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.activeThreadsOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-04-28 14:48:47,530 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.timeVsThreads.exclude_controllers' not found, using default value 'false' instead.
+2026-04-28 14:48:47,530 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimeDistribution.exclude_controllers' not found, using default value 'false' instead.
+2026-04-28 14:48:47,530 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.transactionsPerSecond.exclude_controllers' not found, using default value 'false' instead.
+2026-04-28 14:48:47,530 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimePercentiles.exclude_controllers' not found, using default value 'false' instead.
+2026-04-28 14:48:47,530 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimePercentilesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-04-28 14:48:47,530 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-04-28 14:48:47,530 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.connectTimeOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-04-28 14:48:47,530 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.latenciesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-04-28 14:48:47,531 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.filters_only_sample_series' not found, using default value 'true' instead.
+2026-04-28 14:48:47,531 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.series_filter' not found, using default value '' instead.
+2026-04-28 14:48:47,531 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.show_controllers_only' not found, using default value 'false' instead.
+2026-04-28 14:48:47,531 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.filters_only_sample_series' not found, using default value 'true' instead.
+2026-04-28 14:48:47,531 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.series_filter' not found, using default value '' instead.
+2026-04-28 14:48:47,531 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.show_controllers_only' not found, using default value 'false' instead.
+2026-04-28 14:48:47,539 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2026-04-28 14:48:47,540 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-04-28 14:48:47,540 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-04-28 14:48:47,542 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2026-04-28 14:48:47,542 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2026-04-28 14:48:47,569 INFO o.a.j.r.ClassFinder: Will scan jar /opt/homebrew/Cellar/jmeter/5.6.3/libexec/lib/ext/jmeter-plugins-manager-1.9.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.functions.Function], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2026-04-28 14:48:47,765 INFO o.a.j.JMeter: Running test (1777367927765)
+2026-04-28 14:48:47,777 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : MongoDB Benchmark
+2026-04-28 14:48:47,777 INFO o.a.j.e.StandardJMeterEngine: Starting 5 threads for group MongoDB Benchmark.
+2026-04-28 14:48:47,777 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-04-28 14:48:47,777 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=5 ramp-up=1 delayedStart=false
+2026-04-28 14:48:47,781 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2026-04-28 14:48:47,781 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: MongoDB Benchmark to finish before starting next group
+2026-04-28 14:48:47,782 INFO o.a.j.t.JMeterThread: Thread started: MongoDB Benchmark 1-1
+2026-04-28 14:48:47,783 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2026-04-28 14:48:47,783 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
+2026-04-28 14:48:47,783 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2026-04-28 14:48:47,783 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2026-04-28 14:48:47,984 INFO o.a.j.t.JMeterThread: Thread started: MongoDB Benchmark 1-2
+2026-04-28 14:48:48,183 INFO o.a.j.t.JMeterThread: Thread started: MongoDB Benchmark 1-3
+2026-04-28 14:48:48,317 INFO o.m.d.client: MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync", "version": "4.8.2"}, "os": {"type": "Darwin", "name": "Mac OS X", "architecture": "aarch64", "version": "26.4.1"}, "platform": "Java/Homebrew/21.0.10"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.Jep395RecordCodecProvider@62c71ce7]}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=UNSPECIFIED, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
+2026-04-28 14:48:48,336 INFO o.m.d.cluster: Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=14857625}
+2026-04-28 14:48:48,380 INFO o.a.j.t.JMeterThread: Thread started: MongoDB Benchmark 1-4
+2026-04-28 14:48:48,579 INFO o.a.j.t.JMeterThread: Thread started: MongoDB Benchmark 1-5
+2026-04-28 14:49:00,010 INFO o.a.j.r.Summariser: summary +    689 in 00:00:12 =   56.3/s Avg:    85 Min:     2 Max:  2362 Err:     0 (0.00%) Active: 5 Started: 5 Finished: 0
+2026-04-28 14:49:24,612 INFO o.a.j.t.JMeterThread: Thread is done: MongoDB Benchmark 1-3
+2026-04-28 14:49:24,613 INFO o.a.j.t.JMeterThread: Thread finished: MongoDB Benchmark 1-3
+2026-04-28 14:49:24,615 INFO o.a.j.t.JMeterThread: Thread is done: MongoDB Benchmark 1-1
+2026-04-28 14:49:24,616 INFO o.a.j.t.JMeterThread: Thread finished: MongoDB Benchmark 1-1
+2026-04-28 14:49:24,667 INFO o.a.j.t.JMeterThread: Thread is done: MongoDB Benchmark 1-5
+2026-04-28 14:49:24,667 INFO o.a.j.t.JMeterThread: Thread finished: MongoDB Benchmark 1-5
+2026-04-28 14:49:24,727 INFO o.a.j.t.JMeterThread: Thread is done: MongoDB Benchmark 1-4
+2026-04-28 14:49:24,728 INFO o.a.j.t.JMeterThread: Thread finished: MongoDB Benchmark 1-4
+2026-04-28 14:49:24,875 INFO o.a.j.t.JMeterThread: Thread is done: MongoDB Benchmark 1-2
+2026-04-28 14:49:24,876 INFO o.a.j.t.JMeterThread: Thread finished: MongoDB Benchmark 1-2
+2026-04-28 14:49:24,876 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 2 : Cassandra Benchmark
+2026-04-28 14:49:24,876 INFO o.a.j.e.StandardJMeterEngine: Starting 5 threads for group Cassandra Benchmark.
+2026-04-28 14:49:24,877 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-04-28 14:49:24,877 INFO o.a.j.t.ThreadGroup: Starting thread group... number=2 threads=5 ramp-up=1 delayedStart=false
+2026-04-28 14:49:24,878 INFO o.a.j.t.JMeterThread: Thread started: Cassandra Benchmark 2-1
+2026-04-28 14:49:24,878 INFO o.a.j.t.ThreadGroup: Started thread group number 2
+2026-04-28 14:49:24,878 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Cassandra Benchmark to finish before starting next group
+2026-04-28 14:49:25,078 INFO c.d.o.d.i.c.DefaultMavenCoordinates: DataStax Java driver for Apache Cassandra(R) (com.datastax.oss:java-driver-core-shaded) version 4.13.0
+2026-04-28 14:49:25,081 INFO o.a.j.t.JMeterThread: Thread started: Cassandra Benchmark 2-2
+2026-04-28 14:49:25,152 INFO c.d.o.d.i.c.o.Native: Unable to load JNR native implementation. This could be normal if JNR is excluded from the classpath
 java.lang.NoClassDefFoundError: jnr/posix/POSIXHandler
 	at com.datastax.oss.driver.internal.core.os.Native$LibcLoader.load(Native.java:42) ~[java-driver-core-shaded-4.13.0.jar:?]
 	at com.datastax.oss.driver.internal.core.os.Native.<clinit>(Native.java:59) ~[java-driver-core-shaded-4.13.0.jar:?]
@@ -146,98 +146,98 @@ Caused by: java.lang.ClassNotFoundException: jnr.posix.POSIXHandler
 	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:593) ~[?:?]
 	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[?:?]
 	... 25 more
-2026-04-21 12:17:50,621 INFO c.d.o.d.i.c.t.Clock: Could not access native clock (see debug logs for details), falling back to Java system clock
-2026-04-21 12:17:50,761 INFO o.a.j.t.JMeterThread: Thread started: Cassandra Benchmark 2-3
-2026-04-21 12:17:50,958 INFO o.a.j.t.JMeterThread: Thread started: Cassandra Benchmark 2-4
-2026-04-21 12:17:51,158 INFO o.a.j.t.JMeterThread: Thread started: Cassandra Benchmark 2-5
-2026-04-21 12:17:51,971 INFO o.a.j.t.JMeterThread: Thread is done: Cassandra Benchmark 2-3
-2026-04-21 12:17:51,971 INFO o.a.j.t.JMeterThread: Thread finished: Cassandra Benchmark 2-3
-2026-04-21 12:17:51,978 INFO o.a.j.t.JMeterThread: Thread is done: Cassandra Benchmark 2-1
-2026-04-21 12:17:51,978 INFO o.a.j.t.JMeterThread: Thread finished: Cassandra Benchmark 2-1
-2026-04-21 12:17:51,982 INFO o.a.j.t.JMeterThread: Thread is done: Cassandra Benchmark 2-4
-2026-04-21 12:17:51,983 INFO o.a.j.t.JMeterThread: Thread finished: Cassandra Benchmark 2-4
-2026-04-21 12:17:51,991 INFO o.a.j.t.JMeterThread: Thread is done: Cassandra Benchmark 2-2
-2026-04-21 12:17:51,991 INFO o.a.j.t.JMeterThread: Thread finished: Cassandra Benchmark 2-2
-2026-04-21 12:17:52,038 INFO o.a.j.t.JMeterThread: Thread is done: Cassandra Benchmark 2-5
-2026-04-21 12:17:52,038 INFO o.a.j.t.JMeterThread: Thread finished: Cassandra Benchmark 2-5
-2026-04-21 12:17:52,039 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 3 : MySQL Baseline Benchmark
-2026-04-21 12:17:52,039 INFO o.a.j.e.StandardJMeterEngine: Starting 5 threads for group MySQL Baseline Benchmark.
-2026-04-21 12:17:52,039 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
-2026-04-21 12:17:52,039 INFO o.a.j.t.ThreadGroup: Starting thread group... number=3 threads=5 ramp-up=1 delayedStart=false
-2026-04-21 12:17:52,040 INFO o.a.j.t.JMeterThread: Thread started: MySQL Baseline Benchmark 3-1
-2026-04-21 12:17:52,040 INFO o.a.j.t.ThreadGroup: Started thread group number 3
-2026-04-21 12:17:52,040 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: MySQL Baseline Benchmark to finish before starting next group
-2026-04-21 12:17:52,245 INFO o.a.j.t.JMeterThread: Thread started: MySQL Baseline Benchmark 3-2
-2026-04-21 12:17:52,442 INFO o.a.j.t.JMeterThread: Thread started: MySQL Baseline Benchmark 3-3
-2026-04-21 12:17:52,644 INFO o.a.j.t.JMeterThread: Thread started: MySQL Baseline Benchmark 3-4
-2026-04-21 12:17:52,844 INFO o.a.j.t.JMeterThread: Thread started: MySQL Baseline Benchmark 3-5
-2026-04-21 12:18:00,004 INFO o.a.j.t.JMeterThread: Thread is done: MySQL Baseline Benchmark 3-3
-2026-04-21 12:18:00,004 INFO o.a.j.t.JMeterThread: Thread finished: MySQL Baseline Benchmark 3-3
-2026-04-21 12:18:00,004 INFO o.a.j.r.Summariser: summary +   6373 in 00:00:30 =  212.4/s Avg:    22 Min:     0 Max:   539 Err:     0 (0.00%) Active: 5 Started: 15 Finished: 10
-2026-04-21 12:18:00,005 INFO o.a.j.r.Summariser: summary =   7389 in 00:00:46 =  162.0/s Avg:    29 Min:     0 Max:  1607 Err:     0 (0.00%)
-2026-04-21 12:18:00,205 INFO o.a.j.t.JMeterThread: Thread is done: MySQL Baseline Benchmark 3-1
-2026-04-21 12:18:00,205 INFO o.a.j.t.JMeterThread: Thread finished: MySQL Baseline Benchmark 3-1
-2026-04-21 12:18:00,234 INFO o.a.j.t.JMeterThread: Thread is done: MySQL Baseline Benchmark 3-2
-2026-04-21 12:18:00,234 INFO o.a.j.t.JMeterThread: Thread finished: MySQL Baseline Benchmark 3-2
-2026-04-21 12:18:00,247 INFO o.a.j.t.JMeterThread: Thread is done: MySQL Baseline Benchmark 3-4
-2026-04-21 12:18:00,247 INFO o.a.j.t.JMeterThread: Thread finished: MySQL Baseline Benchmark 3-4
-2026-04-21 12:18:00,276 INFO o.a.j.t.JMeterThread: Thread is done: MySQL Baseline Benchmark 3-5
-2026-04-21 12:18:00,276 INFO o.a.j.t.JMeterThread: Thread finished: MySQL Baseline Benchmark 3-5
-2026-04-21 12:18:00,276 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
-2026-04-21 12:18:00,276 INFO o.a.j.e.StandardJMeterEngine: Starting tearDown thread groups
-2026-04-21 12:18:00,276 INFO o.a.j.e.StandardJMeterEngine: Starting tearDown ThreadGroup: 1 : Teardown - Close Connections
-2026-04-21 12:18:00,276 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Teardown - Close Connections.
-2026-04-21 12:18:00,276 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
-2026-04-21 12:18:00,277 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=0 delayedStart=false
-2026-04-21 12:18:00,277 INFO o.a.j.t.ThreadGroup: Started thread group number 1
-2026-04-21 12:18:00,277 INFO o.a.j.t.JMeterThread: Thread started: Teardown - Close Connections 1-1
-2026-04-21 12:18:00,300 INFO o.a.j.p.j.s.J.Close All Connections: MongoDB connection closed.
-2026-04-21 12:18:02,384 INFO o.a.j.p.j.s.J.Close All Connections: Cassandra session closed.
-2026-04-21 12:18:02,389 INFO o.a.j.p.j.s.J.Close All Connections: MySQL connection closed.
-2026-04-21 12:18:02,389 INFO o.a.j.t.JMeterThread: Thread is done: Teardown - Close Connections 1-1
-2026-04-21 12:18:02,389 INFO o.a.j.t.JMeterThread: Thread finished: Teardown - Close Connections 1-1
-2026-04-21 12:18:02,389 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
-2026-04-21 12:18:02,393 INFO o.a.j.r.Summariser: summary +    112 in 00:00:02 =   46.9/s Avg:    28 Min:     0 Max:  2112 Err:     0 (0.00%) Active: 0 Started: 1 Finished: 1
-2026-04-21 12:18:02,393 INFO o.a.j.r.Summariser: summary =   7501 in 00:00:48 =  156.3/s Avg:    29 Min:     0 Max:  2112 Err:     0 (0.00%)
-2026-04-21 12:18:02,394 INFO o.a.j.JMeter: Generating Dashboard
-2026-04-21 12:18:02,394 INFO o.a.j.r.d.ReportGenerator: Flushing result collector before report Generation
-2026-04-21 12:18:02,409 INFO o.a.j.r.p.NormalizerSampleConsumer: Using format, 'ms', to parse timeStamp field
-2026-04-21 12:18:02,589 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.AggregateConsumer#stopProducing(): beginDate produced 0 samples
-2026-04-21 12:18:02,589 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.AggregateConsumer#stopProducing(): endDate produced 0 samples
-2026-04-21 12:18:02,591 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.ApdexSummaryConsumer#stopProducing(): apdexSummary produced 0 samples
-2026-04-21 12:18:02,591 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.RequestsSummaryConsumer#stopProducing(): requestsSummary produced 0 samples
-2026-04-21 12:18:02,598 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.StatisticsSummaryConsumer#stopProducing(): statisticsSummary produced 0 samples
-2026-04-21 12:18:02,600 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.Top5ErrorsBySamplerConsumer#stopProducing(): top5ErrorsBySampler produced 0 samples
-2026-04-21 12:18:02,600 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.ErrorsSummaryConsumer#stopProducing(): errorsSummary produced 0 samples
-2026-04-21 12:18:02,600 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.HitsPerSecondGraphConsumer#stopProducing(): hitsPerSecond produced 0 samples
-2026-04-21 12:18:02,645 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.LatencyVSRequestGraphConsumer#stopProducing(): latencyVsRequest produced 0 samples
-2026-04-21 12:18:02,645 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.SyntheticResponseTimeDistributionGraphConsumer#stopProducing(): syntheticResponseTimeDistribution produced 0 samples
-2026-04-21 12:18:02,645 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.BytesThroughputGraphConsumer#stopProducing(): bytesThroughputOverTime produced 0 samples
-2026-04-21 12:18:02,646 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.CodesPerSecondGraphConsumer#stopProducing(): codesPerSecond produced 0 samples
-2026-04-21 12:18:02,676 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeVSRequestGraphConsumer#stopProducing(): responseTimeVsRequest produced 0 samples
-2026-04-21 12:18:02,677 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): startIntervalControlerFilter produced 52507 samples
-2026-04-21 12:18:02,677 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TotalTPSGraphConsumer#stopProducing(): totalTPS produced 0 samples
-2026-04-21 12:18:02,677 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ActiveThreadsGraphConsumer#stopProducing(): activeThreadsOverTime produced 0 samples
-2026-04-21 12:18:02,677 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TimeVSThreadGraphConsumer#stopProducing(): timeVsThreads produced 0 samples
-2026-04-21 12:18:02,677 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeDistributionGraphConsumer#stopProducing(): responseTimeDistribution produced 0 samples
-2026-04-21 12:18:02,677 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TransactionsPerSecondGraphConsumer#stopProducing(): transactionsPerSecond produced 0 samples
-2026-04-21 12:18:02,677 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimePercentilesGraphConsumer#stopProducing(): responseTimePercentiles produced 0 samples
-2026-04-21 12:18:02,681 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimePercentilesOverTimeGraphConsumer#stopProducing(): responseTimePercentilesOverTime produced 0 samples
-2026-04-21 12:18:02,682 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeOverTimeGraphConsumer#stopProducing(): responseTimesOverTime produced 0 samples
-2026-04-21 12:18:02,682 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ConnectTimeOverTimeGraphConsumer#stopProducing(): connectTimeOverTime produced 0 samples
-2026-04-21 12:18:02,682 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.LatencyOverTimeGraphConsumer#stopProducing(): latenciesOverTime produced 0 samples
-2026-04-21 12:18:02,682 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): nameFilter produced 112515 samples
-2026-04-21 12:18:02,682 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): dateRangeFilter produced 22503 samples
-2026-04-21 12:18:02,682 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.NormalizerSampleConsumer#stopProducing(): normalizer produced 7501 samples
-2026-04-21 12:18:02,683 INFO o.a.j.r.p.CsvFileSampleSource: produce(): 7501 samples produced in 261ms on channel 0
-2026-04-21 12:18:02,683 INFO o.a.j.r.d.ReportGenerator: Exporting data using exporter:'json' of className:'org.apache.jmeter.report.dashboard.JsonExporter'
-2026-04-21 12:18:02,730 INFO o.a.j.r.d.JsonExporter: Found data for consumer statisticsSummary in context
-2026-04-21 12:18:02,730 INFO o.a.j.r.d.JsonExporter: Creating statistics for overall
-2026-04-21 12:18:02,730 INFO o.a.j.r.d.JsonExporter: Creating statistics for other transactions
-2026-04-21 12:18:02,731 INFO o.a.j.r.d.JsonExporter: Checking output folder
-2026-04-21 12:18:02,731 INFO o.a.j.r.d.JsonExporter: Writing statistics JSON to /Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress/jmeter_reports/statistics.json
-2026-04-21 12:18:02,755 INFO o.a.j.r.d.ReportGenerator: Exporting data using exporter:'html' of className:'org.apache.jmeter.report.dashboard.HtmlTemplateExporter'
-2026-04-21 12:18:02,757 INFO o.a.j.r.d.HtmlTemplateExporter: Will generate dashboard in folder: /Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress/jmeter_reports
-2026-04-21 12:18:02,830 INFO o.a.j.r.d.HtmlTemplateExporter: Report will be generated in: /Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress/jmeter_reports, creating folder structure
-2026-04-21 12:18:02,831 INFO o.a.j.r.d.TemplateVisitor: Copying folder from '/opt/homebrew/Cellar/jmeter/5.6.3/libexec/bin/report-template' to '/Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress/jmeter_reports', got message: /Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress/jmeter_reports, found non empty folder with following content [/Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress/jmeter_reports/statistics.json], will be ignored
-2026-04-21 12:18:02,994 INFO o.a.j.JMeter: Dashboard generated
+2026-04-28 14:49:25,155 INFO c.d.o.d.i.c.t.Clock: Could not access native clock (see debug logs for details), falling back to Java system clock
+2026-04-28 14:49:25,279 INFO o.a.j.t.JMeterThread: Thread started: Cassandra Benchmark 2-3
+2026-04-28 14:49:25,482 INFO o.a.j.t.JMeterThread: Thread started: Cassandra Benchmark 2-4
+2026-04-28 14:49:25,681 INFO o.a.j.t.JMeterThread: Thread started: Cassandra Benchmark 2-5
+2026-04-28 14:49:26,500 INFO o.a.j.t.JMeterThread: Thread is done: Cassandra Benchmark 2-2
+2026-04-28 14:49:26,500 INFO o.a.j.t.JMeterThread: Thread finished: Cassandra Benchmark 2-2
+2026-04-28 14:49:26,504 INFO o.a.j.t.JMeterThread: Thread is done: Cassandra Benchmark 2-3
+2026-04-28 14:49:26,504 INFO o.a.j.t.JMeterThread: Thread finished: Cassandra Benchmark 2-3
+2026-04-28 14:49:26,510 INFO o.a.j.t.JMeterThread: Thread is done: Cassandra Benchmark 2-4
+2026-04-28 14:49:26,510 INFO o.a.j.t.JMeterThread: Thread finished: Cassandra Benchmark 2-4
+2026-04-28 14:49:26,515 INFO o.a.j.t.JMeterThread: Thread is done: Cassandra Benchmark 2-1
+2026-04-28 14:49:26,515 INFO o.a.j.t.JMeterThread: Thread finished: Cassandra Benchmark 2-1
+2026-04-28 14:49:26,548 INFO o.a.j.t.JMeterThread: Thread is done: Cassandra Benchmark 2-5
+2026-04-28 14:49:26,548 INFO o.a.j.t.JMeterThread: Thread finished: Cassandra Benchmark 2-5
+2026-04-28 14:49:26,548 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 3 : MySQL Baseline Benchmark
+2026-04-28 14:49:26,548 INFO o.a.j.e.StandardJMeterEngine: Starting 5 threads for group MySQL Baseline Benchmark.
+2026-04-28 14:49:26,548 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-04-28 14:49:26,549 INFO o.a.j.t.ThreadGroup: Starting thread group... number=3 threads=5 ramp-up=1 delayedStart=false
+2026-04-28 14:49:26,549 INFO o.a.j.t.JMeterThread: Thread started: MySQL Baseline Benchmark 3-1
+2026-04-28 14:49:26,550 INFO o.a.j.t.ThreadGroup: Started thread group number 3
+2026-04-28 14:49:26,550 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: MySQL Baseline Benchmark to finish before starting next group
+2026-04-28 14:49:26,754 INFO o.a.j.t.JMeterThread: Thread started: MySQL Baseline Benchmark 3-2
+2026-04-28 14:49:26,954 INFO o.a.j.t.JMeterThread: Thread started: MySQL Baseline Benchmark 3-3
+2026-04-28 14:49:27,153 INFO o.a.j.t.JMeterThread: Thread started: MySQL Baseline Benchmark 3-4
+2026-04-28 14:49:27,351 INFO o.a.j.t.JMeterThread: Thread started: MySQL Baseline Benchmark 3-5
+2026-04-28 14:49:30,002 INFO o.a.j.r.Summariser: summary +   5043 in 00:00:30 =  168.1/s Avg:    28 Min:     0 Max:   580 Err:     0 (0.00%) Active: 5 Started: 15 Finished: 10
+2026-04-28 14:49:30,002 INFO o.a.j.r.Summariser: summary =   5732 in 00:00:42 =  135.7/s Avg:    35 Min:     0 Max:  2362 Err:     0 (0.00%)
+2026-04-28 14:49:35,911 INFO o.a.j.t.JMeterThread: Thread is done: MySQL Baseline Benchmark 3-2
+2026-04-28 14:49:35,911 INFO o.a.j.t.JMeterThread: Thread finished: MySQL Baseline Benchmark 3-2
+2026-04-28 14:49:36,034 INFO o.a.j.t.JMeterThread: Thread is done: MySQL Baseline Benchmark 3-1
+2026-04-28 14:49:36,034 INFO o.a.j.t.JMeterThread: Thread finished: MySQL Baseline Benchmark 3-1
+2026-04-28 14:49:36,066 INFO o.a.j.t.JMeterThread: Thread is done: MySQL Baseline Benchmark 3-3
+2026-04-28 14:49:36,066 INFO o.a.j.t.JMeterThread: Thread finished: MySQL Baseline Benchmark 3-3
+2026-04-28 14:49:36,090 INFO o.a.j.t.JMeterThread: Thread is done: MySQL Baseline Benchmark 3-4
+2026-04-28 14:49:36,090 INFO o.a.j.t.JMeterThread: Thread finished: MySQL Baseline Benchmark 3-4
+2026-04-28 14:49:36,114 INFO o.a.j.t.JMeterThread: Thread is done: MySQL Baseline Benchmark 3-5
+2026-04-28 14:49:36,114 INFO o.a.j.t.JMeterThread: Thread finished: MySQL Baseline Benchmark 3-5
+2026-04-28 14:49:36,114 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2026-04-28 14:49:36,114 INFO o.a.j.e.StandardJMeterEngine: Starting tearDown thread groups
+2026-04-28 14:49:36,114 INFO o.a.j.e.StandardJMeterEngine: Starting tearDown ThreadGroup: 1 : Teardown - Close Connections
+2026-04-28 14:49:36,114 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Teardown - Close Connections.
+2026-04-28 14:49:36,114 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-04-28 14:49:36,114 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=0 delayedStart=false
+2026-04-28 14:49:36,114 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2026-04-28 14:49:36,114 INFO o.a.j.t.JMeterThread: Thread started: Teardown - Close Connections 1-1
+2026-04-28 14:49:36,140 INFO o.a.j.p.j.s.J.Close All Connections: MongoDB connection closed.
+2026-04-28 14:49:38,215 INFO o.a.j.p.j.s.J.Close All Connections: Cassandra session closed.
+2026-04-28 14:49:38,220 INFO o.a.j.p.j.s.J.Close All Connections: MySQL connection closed.
+2026-04-28 14:49:38,220 INFO o.a.j.t.JMeterThread: Thread is done: Teardown - Close Connections 1-1
+2026-04-28 14:49:38,220 INFO o.a.j.t.JMeterThread: Thread finished: Teardown - Close Connections 1-1
+2026-04-28 14:49:38,221 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2026-04-28 14:49:38,226 INFO o.a.j.r.Summariser: summary +   1769 in 00:00:08 =  215.1/s Avg:    18 Min:     0 Max:  2105 Err:     0 (0.00%) Active: 0 Started: 1 Finished: 1
+2026-04-28 14:49:38,226 INFO o.a.j.r.Summariser: summary =   7501 in 00:00:50 =  148.6/s Avg:    31 Min:     0 Max:  2362 Err:     0 (0.00%)
+2026-04-28 14:49:38,226 INFO o.a.j.JMeter: Generating Dashboard
+2026-04-28 14:49:38,226 INFO o.a.j.r.d.ReportGenerator: Flushing result collector before report Generation
+2026-04-28 14:49:38,240 INFO o.a.j.r.p.NormalizerSampleConsumer: Using format, 'ms', to parse timeStamp field
+2026-04-28 14:49:38,461 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.AggregateConsumer#stopProducing(): beginDate produced 0 samples
+2026-04-28 14:49:38,461 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.AggregateConsumer#stopProducing(): endDate produced 0 samples
+2026-04-28 14:49:38,463 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.ApdexSummaryConsumer#stopProducing(): apdexSummary produced 0 samples
+2026-04-28 14:49:38,463 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.RequestsSummaryConsumer#stopProducing(): requestsSummary produced 0 samples
+2026-04-28 14:49:38,470 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.StatisticsSummaryConsumer#stopProducing(): statisticsSummary produced 0 samples
+2026-04-28 14:49:38,473 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.Top5ErrorsBySamplerConsumer#stopProducing(): top5ErrorsBySampler produced 0 samples
+2026-04-28 14:49:38,473 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.ErrorsSummaryConsumer#stopProducing(): errorsSummary produced 0 samples
+2026-04-28 14:49:38,473 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.HitsPerSecondGraphConsumer#stopProducing(): hitsPerSecond produced 0 samples
+2026-04-28 14:49:38,520 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.LatencyVSRequestGraphConsumer#stopProducing(): latencyVsRequest produced 0 samples
+2026-04-28 14:49:38,521 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.SyntheticResponseTimeDistributionGraphConsumer#stopProducing(): syntheticResponseTimeDistribution produced 0 samples
+2026-04-28 14:49:38,521 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.BytesThroughputGraphConsumer#stopProducing(): bytesThroughputOverTime produced 0 samples
+2026-04-28 14:49:38,521 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.CodesPerSecondGraphConsumer#stopProducing(): codesPerSecond produced 0 samples
+2026-04-28 14:49:38,557 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeVSRequestGraphConsumer#stopProducing(): responseTimeVsRequest produced 0 samples
+2026-04-28 14:49:38,558 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): startIntervalControlerFilter produced 52507 samples
+2026-04-28 14:49:38,558 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TotalTPSGraphConsumer#stopProducing(): totalTPS produced 0 samples
+2026-04-28 14:49:38,558 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ActiveThreadsGraphConsumer#stopProducing(): activeThreadsOverTime produced 0 samples
+2026-04-28 14:49:38,558 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TimeVSThreadGraphConsumer#stopProducing(): timeVsThreads produced 0 samples
+2026-04-28 14:49:38,558 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeDistributionGraphConsumer#stopProducing(): responseTimeDistribution produced 0 samples
+2026-04-28 14:49:38,558 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TransactionsPerSecondGraphConsumer#stopProducing(): transactionsPerSecond produced 0 samples
+2026-04-28 14:49:38,558 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimePercentilesGraphConsumer#stopProducing(): responseTimePercentiles produced 0 samples
+2026-04-28 14:49:38,562 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimePercentilesOverTimeGraphConsumer#stopProducing(): responseTimePercentilesOverTime produced 0 samples
+2026-04-28 14:49:38,562 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeOverTimeGraphConsumer#stopProducing(): responseTimesOverTime produced 0 samples
+2026-04-28 14:49:38,562 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ConnectTimeOverTimeGraphConsumer#stopProducing(): connectTimeOverTime produced 0 samples
+2026-04-28 14:49:38,563 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.LatencyOverTimeGraphConsumer#stopProducing(): latenciesOverTime produced 0 samples
+2026-04-28 14:49:38,563 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): nameFilter produced 112515 samples
+2026-04-28 14:49:38,563 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): dateRangeFilter produced 22503 samples
+2026-04-28 14:49:38,563 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.NormalizerSampleConsumer#stopProducing(): normalizer produced 7501 samples
+2026-04-28 14:49:38,563 INFO o.a.j.r.p.CsvFileSampleSource: produce(): 7501 samples produced in 310ms on channel 0
+2026-04-28 14:49:38,563 INFO o.a.j.r.d.ReportGenerator: Exporting data using exporter:'json' of className:'org.apache.jmeter.report.dashboard.JsonExporter'
+2026-04-28 14:49:38,610 INFO o.a.j.r.d.JsonExporter: Found data for consumer statisticsSummary in context
+2026-04-28 14:49:38,610 INFO o.a.j.r.d.JsonExporter: Creating statistics for overall
+2026-04-28 14:49:38,610 INFO o.a.j.r.d.JsonExporter: Creating statistics for other transactions
+2026-04-28 14:49:38,610 INFO o.a.j.r.d.JsonExporter: Checking output folder
+2026-04-28 14:49:38,611 INFO o.a.j.r.d.JsonExporter: Writing statistics JSON to /Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress/jmeter_reports/statistics.json
+2026-04-28 14:49:38,636 INFO o.a.j.r.d.ReportGenerator: Exporting data using exporter:'html' of className:'org.apache.jmeter.report.dashboard.HtmlTemplateExporter'
+2026-04-28 14:49:38,637 INFO o.a.j.r.d.HtmlTemplateExporter: Will generate dashboard in folder: /Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress/jmeter_reports
+2026-04-28 14:49:38,703 INFO o.a.j.r.d.HtmlTemplateExporter: Report will be generated in: /Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress/jmeter_reports, creating folder structure
+2026-04-28 14:49:38,704 INFO o.a.j.r.d.TemplateVisitor: Copying folder from '/opt/homebrew/Cellar/jmeter/5.6.3/libexec/bin/report-template' to '/Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress/jmeter_reports', got message: /Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress/jmeter_reports, found non empty folder with following content [/Users/apple/Documents/DatabaseLab/DatabaseProject/BenchPress/jmeter_reports/statistics.json], will be ignored
+2026-04-28 14:49:38,870 INFO o.a.j.JMeter: Dashboard generated
