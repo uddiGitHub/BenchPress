@@ -44,7 +44,7 @@ def load_parquet_to_mongodb(parquet_path, collection_name, batch_size=5000):
 
     table = pq.read_table(parquet_path)
     num_rows = table.num_rows
-    print(f"Loaded {num_rows} rows from {parquet_path}")
+    print(f"  Loading {num_rows} documents into MongoDB...")
 
     inserted_total = 0
     for start in range(0, num_rows, batch_size):
@@ -70,11 +70,11 @@ def load_parquet_to_mongodb(parquet_path, collection_name, batch_size=5000):
                     inserted_total += 1
                 except DocumentTooLarge:
                     customer_id = rec.get("customer_id", "unknown")
-                    print(f"Skipping customer {customer_id} – document exceeds 16MB")
+                    print(f"  ⚠ Skipping customer {customer_id} – document exceeds 16MB")
                 except Exception as inner_e:
-                    print(f"Failed to insert document: {inner_e}")
+                    print(f"  ⚠ Failed to insert document: {inner_e}")
 
-    print(f"✅ Loaded {inserted_total} documents into {db_name}.{collection_name}")
+    print(f"  ✔ Inserted {inserted_total} documents into {db_name}.{collection_name}")
     client.close()
 
 def create_cassandra_keyspace_and_table():
@@ -122,7 +122,7 @@ def create_cassandra_keyspace_and_table():
         )
     """)
     cluster.shutdown()
-    print(f"Cassandra keyspace '{keyspace}' and table 'customer_orders' ready.")
+    print(f"  ✔ Cassandra keyspace '{keyspace}' and table 'customer_orders' ready")
 
 
 def load_to_cassandra(df, table_name="customer_orders", truncate_first=False):
@@ -135,8 +135,8 @@ def load_to_cassandra(df, table_name="customer_orders", truncate_first=False):
         session = cluster.connect(keyspace)
         session.execute(f"TRUNCATE {table_name}")
         cluster.shutdown()
-        print(f"Truncated {keyspace}.{table_name}")
     
+    print(f"  Loading data into {keyspace}.{table_name}...")
     df.write \
         .format("org.apache.spark.sql.cassandra") \
         .options(
@@ -150,4 +150,4 @@ def load_to_cassandra(df, table_name="customer_orders", truncate_first=False):
         .option("spark.cassandra.read.timeoutMS", "120000") \
         .mode("append") \
         .save()
-    print(f"✅ Loaded data into Cassandra table {keyspace}.{table_name}.")
+    print(f"  ✔ Loaded data into {keyspace}.{table_name}")

@@ -275,11 +275,49 @@ CASSANDRA_KEYSPACE=tpch1gb
 
 ## Running the Pipeline
 
-Run the pipeline from the project root:
+Run the full pipeline from the project root:
 
 ```bash
-spark-submit --packages com.datastax.spark:spark-cassandra-connector_2.12:3.5.0,org.mongodb.spark:mongo-spark-connector_2.12:10.3.0,com.mysql:mysql-connector-j:8.0.33,com.github.jnr:jnr-posix:3.1.15 --driver-memory 6g --executor-memory 6g main.py
+source env/bin/activate
+
+spark-submit \
+  --packages com.datastax.spark:spark-cassandra-connector_2.12:3.5.0,org.mongodb.spark:mongo-spark-connector_2.12:10.3.0,com.mysql:mysql-connector-j:8.0.33,com.github.jnr:jnr-posix:3.1.15 \
+  --driver-memory 6g --executor-memory 6g \
+  main.py
 ```
+
+### Stage Control
+
+The pipeline supports CLI flags to control which stages run. Available stages: `extract`, `stage`, `transform`, `mongodb`, `cassandra`.
+
+| Flag | Description |
+|---|---|
+| `--all` | Run all stages (default) |
+| `--stages <list>` | Run **only** the specified stages |
+| `--skip <list>` | Run all stages **except** the specified ones |
+
+### Examples
+
+```bash
+# Full pipeline (default)
+spark-submit ... main.py
+spark-submit ... main.py --all
+
+# Skip MongoDB, load only to Cassandra
+spark-submit ... main.py --skip mongodb
+
+# Skip Cassandra, load only to MongoDB
+spark-submit ... main.py --skip cassandra
+
+# Only extract and stage (no transform/load)
+spark-submit ... main.py --stages extract stage
+
+# Run everything except both database loads
+spark-submit ... main.py --skip mongodb cassandra
+```
+
+> **Note:** `spark-submit` does not support interactive stdin, so `input()` prompts cannot be used. Stage selection is handled entirely through CLI flags.
+
 ---
 
 ## Output Targets

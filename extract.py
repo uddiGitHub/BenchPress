@@ -26,7 +26,12 @@ def extract_tpch_tables():
         .config("spark.cassandra.output.concurrent.writes", "1") \
         .config("spark.cassandra.output.throughputMBPerSec", "1") \
         .config("spark.cassandra.output.batch.grouping.key", "partition") \
+        .config("spark.ui.showConsoleProgress", "false") \
+        .config("spark.log.level", "WARN") \
         .getOrCreate()
+
+    # Suppress Spark's own noisy logging
+    spark.sparkContext.setLogLevel("WARN")
 
     # JDBC configuration
     jdbc_url_base = os.getenv("TPCH_JDBC_URL")
@@ -63,7 +68,6 @@ def extract_tpch_tables():
             if not all([jdbc_url, jdbc_user, jdbc_password]):
                 raise ValueError(f"JDBC connection parameters missing for {table}")
 
-            print(f"Loading {table} via JDBC with {config['partitions']} partitions...")
             df = spark.read.format("jdbc").options(
                 url=jdbc_url,
                 dbtable=table,
@@ -81,10 +85,9 @@ def extract_tpch_tables():
             base_path = os.getenv("TPCH_PARQUET_PATH", "/path/to/tpch_parquet")
             file_path = f"{base_path}/{table}.parquet"
             if os.path.exists(file_path):
-                print(f"Loading {table} from Parquet: {file_path}")
                 df = spark.read.parquet(file_path)
             else:
-                print(f"Table {table} not found at {file_path}, skipping...")
+                print(f"  ⚠ Table {table} not found at {file_path}, skipping...")
                 continue
 
         tables[table] = df
